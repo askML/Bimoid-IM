@@ -934,7 +934,8 @@ public class BimoidProfile {
 			
 			if(params.main_status_list == null || params.main_status_list.getHeight() != TransportParams.getPreferedSize()){
 				stld = values.getTLD(0x81);
-				params.main_status_list = TransportParams.getBitmap(stld.getData().readStringUTF8(stld.getLength()));
+				if(stld != null)
+					params.main_status_list = TransportParams.getBitmap(stld.getData().readStringUTF8(stld.getLength()));
 			}
 			if(params.main_status_list == null) dont_add_params = true;
 			
