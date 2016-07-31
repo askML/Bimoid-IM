@@ -124,7 +124,7 @@ public class ContactHistory {
 			historyPreLoaded = true;
 		}
 		} catch (Exception e) {
-			//profile.makeShortToast("Ошибка при чтении истории");
+			//profile.makeShortToast("РћС€РёР±РєР° РїСЂРё С‡С‚РµРЅРёРё РёСЃС‚РѕСЂРёРё");
 			e.printStackTrace();
 		}
 		//}

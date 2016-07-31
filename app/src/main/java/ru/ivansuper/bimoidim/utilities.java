@@ -23,7 +23,7 @@ import android.util.Log;
 import android.widget.TextView;
 public class utilities {
 	public static String chars = "0123456789AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"+
-	"јаЅб¬в√гƒд≈е®Є∆ж«з»и…й кЋлћмЌнќоѕп–р—с“т”у‘ф’х÷ц„чЎшўщЏъџы№ьЁэёюя€";
+	"–Р–∞–С–±–Т–≤–У–≥–Ф–і–Х–µ–Б—С–Ц–ґ–Ч–Ј–Ш–Є–Щ–є–Ъ–Ї–Ы–ї–Ь–Љ–Э–љ–Ю–Њ–Я–њ–†—А–°—Б–Ґ—В–£—Г–§—Д–•—Е–¶—Ж–І—З–®—И–©—Й–™—К–Ђ—Л–ђ—М–≠—Н–Ѓ—О–ѓ—П";
     public static String convertToHex(byte[] data) {
         StringBuffer buf = new StringBuffer();
         for (int i = 0; i < data.length; i++) { 
@@ -117,13 +117,13 @@ public class utilities {
         seconds %= 60;
         StringBuffer buf = new StringBuffer();
         buf.append(days);
-        buf.append(" дней ");
+        buf.append(" –і–љ–µ–є ");
         buf.append(hours);
-        buf.append(" часов ");
+        buf.append(" —З–∞—Б–Њ–≤ ");
         buf.append(minutes);
-        buf.append(" минут ");
+        buf.append(" –Љ–Є–љ—Г—В ");
         buf.append(seconds);
-        buf.append(" секунд");
+        buf.append(" —Б–µ–Ї—Г–љ–і");
         return buf.toString();
     }
     public static boolean isEmptyForDisplay(String source){

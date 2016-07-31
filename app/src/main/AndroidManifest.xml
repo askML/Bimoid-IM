@@ -1,43 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="ru.ivansuper.bimoidim" android:installLocation="auto" android:versionName="1.0.4.1" android:versionCode="7">
-    <uses-sdk android:minSdkVersion="4" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"></uses-permission>
-    <supports-screens android:anyDensity="true" android:largeScreens="true" android:smallScreens="true" android:resizeable="true" android:normalScreens="true" android:xlargeScreens="true"/>
+    package="ru.ivansuper.bimoidim"
+    android:installLocation="auto">
 
-    <application android:icon="@drawable/icon" android:label="@string/app_name" android:theme="@style/MainTheme" android:name="ru.ivansuper.base.loader">
-        <activity android:name=".main"
-                  android:configChanges="keyboardHidden|orientation" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:alwaysRetainTaskState="false" android:noHistory="true" android:launchMode="singleTask">
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="false"
+        android:name="ru.ivansuper.base.loader"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@style/MainTheme">
+
+
+        <activity
+            android:name=".main"
+            android:alwaysRetainTaskState="false"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="ContactListActivity" android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:theme="@style/MainTheme" android:noHistory="false" android:clearTaskOnLaunch="true"></activity>
-        <service android:name="ru.ivansuper.bservice.BimoidService"></service>
-        <activity android:name="SettingsActivity" android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:theme="@style/SettingsTheme" android:alwaysRetainTaskState="false" android:noHistory="false" android:clearTaskOnLaunch="true"></activity>
-        <activity android:name="ProfilesActivity" android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:theme="@style/MainTheme" android:alwaysRetainTaskState="false" android:noHistory="true" android:clearTaskOnLaunch="true">
+        <activity
+            android:name="ContactListActivity"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:noHistory="false"
+            android:theme="@style/MainTheme" />
+
+        <service android:name="ru.ivansuper.bservice.BimoidService" />
+
+        <activity
+            android:name="SettingsActivity"
+            android:alwaysRetainTaskState="false"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:noHistory="false"
+            android:theme="@style/SettingsTheme" />
+        <activity
+            android:name="ProfilesActivity"
+            android:alwaysRetainTaskState="false"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:theme="@style/MainTheme">
             <intent-filter>
-                <category android:name="android.intent.category.DEFAULT"></category><action android:name="ru.ivansuper.bimoidim.PROFILES"></action>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="ru.ivansuper.bimoidim.PROFILES" />
             </intent-filter>
         </activity>
-        <activity android:name="RegistrationActivity" android:launchMode="singleTask" android:configChanges="keyboardHidden|orientation" android:theme="@style/MainTheme" android:alwaysRetainTaskState="false" android:noHistory="true" android:clearTaskOnLaunch="true"></activity>
-        <activity android:name="DetailSearchActivity" android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:theme="@style/MainTheme" android:alwaysRetainTaskState="false" android:noHistory="true" android:clearTaskOnLaunch="true"></activity>
-        <activity android:name="ru.ivansuper.bimoidproto.filetransfer.FileBrowserActivity" android:configChanges="keyboardHidden|orientation" android:theme="@android:style/Theme.Black.NoTitleBar" android:alwaysRetainTaskState="false" android:noHistory="true" android:clearTaskOnLaunch="true"></activity>
-        <activity android:name="SmileysSelector" android:configChanges="keyboardHidden|orientation" android:theme="@style/MainTheme" android:alwaysRetainTaskState="false" android:noHistory="true" android:clearTaskOnLaunch="true"></activity>
-        <activity android:name="HistoryActivity" android:configChanges="keyboardHidden|orientation" android:theme="@style/MainTheme" android:alwaysRetainTaskState="false" android:noHistory="true" android:windowSoftInputMode="stateAlwaysHidden" android:launchMode="singleTask" android:clearTaskOnLaunch="true"></activity>
-        <activity android:launchMode="singleTask" android:configChanges="keyboardHidden|orientation" android:name=".IgnoreActivity" android:theme="@style/MainTheme" android:alwaysRetainTaskState="false" android:noHistory="true" android:clearTaskOnLaunch="true"></activity>
-        <activity android:name=".SkinsActivity" android:configChanges="keyboardHidden|orientation|screenLayout" android:theme="@android:style/Theme.Black.NoTitleBar" android:alwaysRetainTaskState="false" android:noHistory="true" android:launchMode="singleTask" android:clearTaskOnLaunch="true"><intent-filter>
-                <category android:name="android.intent.category.DEFAULT"></category><action android:name="ru.ivansuper.bimoidim.SKINS"></action>
-            </intent-filter></activity>
-        <activity android:name="TransportSettingsActivity" android:theme="@style/MainTheme" android:launchMode="singleTask" android:configChanges="keyboardHidden|orientation"></activity>
+        <activity
+            android:name="RegistrationActivity"
+            android:alwaysRetainTaskState="false"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:theme="@style/MainTheme" />
+        <activity
+            android:name="DetailSearchActivity"
+            android:alwaysRetainTaskState="false"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:theme="@style/MainTheme" />
+        <activity
+            android:name="ru.ivansuper.bimoidproto.filetransfer.FileBrowserActivity"
+            android:alwaysRetainTaskState="false"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
+        <activity
+            android:name="SmileysSelector"
+            android:alwaysRetainTaskState="false"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:noHistory="true"
+            android:theme="@style/MainTheme" />
+        <activity
+            android:name="HistoryActivity"
+            android:alwaysRetainTaskState="false"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:theme="@style/MainTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".IgnoreActivity"
+            android:alwaysRetainTaskState="false"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:theme="@style/MainTheme" />
+        <activity
+            android:name=".SkinsActivity"
+            android:alwaysRetainTaskState="false"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="keyboardHidden|orientation|screenLayout"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.Black.NoTitleBar">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="ru.ivansuper.bimoidim.SKINS" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="TransportSettingsActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:theme="@style/MainTheme" />
 
     </application>
-<uses-permission android:name="android.permission.INTERNET"></uses-permission>
-<uses-permission android:name="android.permission.VIBRATE"></uses-permission>
 
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-<uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
-<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+
 </manifest>

@@ -38,6 +38,10 @@ import ru.ivansuper.socket.ByteCache;
 import ru.ivansuper.socket.ClientSocketConnection;
 
 public class BimoidProfile {
+	public static final int OBIMP_BEX_COM = 0x0001;
+	public static final int OBIMP_BEX_CL = 0x0002;
+	public static final int OBIMP_BEX_PRES = 0x0003;
+
 	public static final byte CONN_STUDY_1 = 0;
 	public static final byte CONN_STUDY_2 = 1;
 	public static final byte CONN_STUDY_3 = 2;
@@ -317,40 +321,40 @@ public class BimoidProfile {
 	private void handleBEX(BEX bex){
 		//Log.d("Profile BEX", "Type: "+String.valueOf(bex.getType())+"   SubType: "+String.valueOf(bex.getSubType()));
 		switch(bex.getType()){
-		case 0x1:
+		case OBIMP_BEX_COM:
 			switch(bex.getSubType()){
-			case 0x2:
-				handleServerHelloReply(bex);
-				updateConnStatus(CONN_STUDY_3);
-				break;
-			case 0x4:
-				handleServerLoginReply(bex);
-				updateConnStatus(CONN_STUDY_5);
-				break;
-			case 0x5:
-				handleServerBye(bex);
-				break;
-			case 0x6:
-				handleServerPING();
-				break;
-			case 0x7:
-				//Log.e("PONG", "*");
-				break;
+				case 0x2: // OBIMP_BEX_COM_SRV_HELLO
+					handleServerHelloReply(bex);
+					updateConnStatus(CONN_STUDY_3);
+					break;
+				case 0x4: // OBIMP_BEX_COM_SRV_LOGIN_REPLY
+					handleServerLoginReply(bex);
+					updateConnStatus(CONN_STUDY_5);
+					break;
+				case 0x5: // OBIMP_BEX_COM_SRV_BYE
+					handleServerBye(bex);
+					break;
+				case 0x6:
+					handleServerPING();
+					break;
+				case 0x7:
+					//Log.e("PONG", "*");
+					break;
 			}
 			break;
-		case 0x2:
+		case OBIMP_BEX_CL:
 			switch(bex.getSubType()){
-			case 0x2:
+			case 0x2: // OBIMP_BEX_CL_SRV_PARAMS_REPLY
 				handleCL_PARAMS(bex);
 				break;
-			case 0x4:
+			case 0x4: // OBIMP_BEX_CL_SRV_REPLY
 				updateConnStatus(CONN_STUDY_7);
 				handleServerRoster(bex);
 				break;
-			case 0x11:
+			case 0x11: // OBIMP_BEX_CL_SRV_DONE_OFFAUTH
 				send(BEX.createEmptyBex(sequence, 2, 0x12, 0));//DEL_OFFAUTH
 				break;
-			case 0x13:
+			case 0x13: // OBIMP_BEX_CL_SRV_ITEM_OPER
 				handleServerItemOperation(bex);
 				break;
 			case 0xD:
@@ -379,7 +383,7 @@ public class BimoidProfile {
 				break;
 			}
 			break;
-		case 0x3:
+		case OBIMP_BEX_PRES:
 			switch(bex.getSubType()){
 			case 0x6:
 				handleServerUserOnline(bex);
@@ -966,10 +970,11 @@ public class BimoidProfile {
 	private void handleServerRoster(BEX bex){
 		Reconnector.stop();
 		//Log.i("ROSTER", "Roster received");
-		Vector<RosterItem> updated = getTemporaryContacts();
+//		Vector<RosterItem> updated = getTemporaryContacts();
 		wTLDList list_ = new wTLDList(bex.getData(), bex.getLength());
 		wTLD roster = list_.getTLD(0x1);
 		synchronized(ContactsAdapter.LOCKER){
+			contacts.clear();
 			label:
 			if(roster.getType() == 0x1){
 					//contacts.clear();
@@ -1010,7 +1015,7 @@ public class BimoidProfile {
 									(list.getTLD(0x5) != null), (list.getTLD(0x6) != null), this);
 							//Log.i("RosterParser", "Contact: "+account+"/"+name);
 							contact.setTransportId(transport_id);
-							updated.add(contact);
+							contacts.add(contact);
 							break;
 						case RosterItem.OBIMP_GROUP:
 							stld = list.getTLD(0x1);
@@ -1018,7 +1023,7 @@ public class BimoidProfile {
 							String group_name = sdata.readStringUTF8(stld.getLength());
 							Group group = new Group(group_name, id, group_id, this);
 							//Log.i("RosterParser", "Group: "+group_name);
-							updated.add(group);
+							contacts.add(group);
 							break;
 						case RosterItem.TRANSPORT_ITEM:
 							stld = list.getTLD(0x1002);
@@ -1039,7 +1044,7 @@ public class BimoidProfile {
 							transport.profile = this;
 							transport.params = getTransportParamsByUUID(UUID);
 							//Log.e("ParsingRoster", "Transport found. Name: "+friendly_name);
-							updated.add(transport);
+							contacts.add(transport);
 							break;
 						case RosterItem.CL_ITEM_TYPE_NOTE:
 							stld = list.getTLD(0x2001);
@@ -1067,14 +1072,13 @@ public class BimoidProfile {
 							note_item.TIMESTAMP = TIMESTAMP;
 							note_item.HASH = HASH;
 							//Log.e("BimoidProfile", "Parsing note item: "+note_item.name);
-							updated.add(note_item);
+							contacts.add(note_item);
 							break;
 						}
 					}
 			}
 			//Log.i("ROSTER", "Roster parsed");
 			svc.clearOpened();
-			contacts = RosterComparator.getInstance().compare(contacts, updated);
 			//contacts.addAll(temporary_contacts);
 			sortContactList();
 		}
@@ -1674,15 +1678,15 @@ public class BimoidProfile {
 		final int OPER_ADD_ITEM = 0x0001;
 		final int OPER_DEL_ITEM = 0x0002;
 		final int OPER_UPD_ITEM = 0x0003;
-		Log.i("BimoidProfile:handleServerItemOperation", "received");
+		Log.i("BimProf:hSrvItemOper", "received");
 		ByteBuffer data = bex.getData();
 		wTLDList list = new wTLDList(data, bex.getLength());
 		wTLD tld = list.getTLD(0x1);
 		if(tld == null){
-			//svc.showDialogInContactList(ID, "Сервер произвел операцию над удаленной копией" +
-			//		" контакт-листа. Уведомление об изменении" +
-			//		" локальной копии обработано не верно." +
-			//		" Рекомендуется переподключить аккаунт.");
+			//svc.showDialogInContactList(ID, "РЎРµСЂРІРµСЂ РїСЂРѕРёР·РІРµР» РѕРїРµСЂР°С†РёСЋ РЅР°Рґ СѓРґР°Р»РµРЅРЅРѕР№ РєРѕРїРёРµР№" +
+			//		" РєРѕРЅС‚Р°РєС‚-Р»РёСЃС‚Р°. РЈРІРµРґРѕРјР»РµРЅРёРµ РѕР± РёР·РјРµРЅРµРЅРёРё" +
+			//		" Р»РѕРєР°Р»СЊРЅРѕР№ РєРѕРїРёРё РѕР±СЂР°Р±РѕС‚Р°РЅРѕ РЅРµ РІРµСЂРЅРѕ." +
+			//		" Р РµРєРѕРјРµРЅРґСѓРµС‚СЃСЏ РїРµСЂРµРїРѕРґРєР»СЋС‡РёС‚СЊ Р°РєРєР°СѓРЅС‚.");
 			return;
 		}
 		int operation = tld.getData().readWord();
@@ -1702,7 +1706,7 @@ public class BimoidProfile {
 				switch(operation){
 				case OPER_ADD_ITEM:
 					if(getContactById(item_id) != null){
-						//svc.showDialogInContactList(ID, "Сервер попытался создать объект в контакт-листе. Такой объект уже существует в Вашем контакт-листе.");
+						//svc.showDialogInContactList(ID, "РЎРµСЂРІРµСЂ РїРѕРїС‹С‚Р°Р»СЃСЏ СЃРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚ РІ РєРѕРЅС‚Р°РєС‚-Р»РёСЃС‚Рµ. РўР°РєРѕР№ РѕР±СЉРµРєС‚ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ РІ Р’Р°С€РµРј РєРѕРЅС‚Р°РєС‚-Р»РёСЃС‚Рµ.");
 						return;
 					}
 					slist = new sTLDList(tld.getData(), tld.getLength());
@@ -1835,7 +1839,7 @@ public class BimoidProfile {
 			case 0x0:
 				RosterOperation operation = getOperation(bex.getID());
 				if(operation == null){
-					//svc.showDialogInContactList(ID+": Результат операции", "Запроса на выполнение операции модификации контакт-листа не было. Переподключитесь");
+					//svc.showDialogInContactList(ID+": Р РµР·СѓР»СЊС‚Р°С‚ РѕРїРµСЂР°С†РёРё", "Р—Р°РїСЂРѕСЃР° РЅР° РІС‹РїРѕР»РЅРµРЅРёРµ РѕРїРµСЂР°С†РёРё РјРѕРґРёС„РёРєР°С†РёРё РєРѕРЅС‚Р°РєС‚-Р»РёСЃС‚Р° РЅРµ Р±С‹Р»Рѕ. РџРµСЂРµРїРѕРґРєР»СЋС‡РёС‚РµСЃСЊ");
 					return;
 				}
 				switch(operation.operation){

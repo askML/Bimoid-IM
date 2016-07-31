@@ -455,7 +455,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 				break;
 			case 20:
 				//if(context_contact.auth_flag){
-				//	service.showDialogInContactList("Ошибка", "Нельзя посмотреть информацию у не авторизованного контакта");
+				//	service.showDialogInContactList("РћС€РёР±РєР°", "РќРµР»СЊР·СЏ РїРѕСЃРјРѕС‚СЂРµС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Сѓ РЅРµ Р°РІС‚РѕСЂРёР·РѕРІР°РЅРЅРѕРіРѕ РєРѕРЅС‚Р°РєС‚Р°");
 				//}else{
 					context_contact.getProfile().doRequestAccountInfo(context_contact);
 				//}
@@ -586,8 +586,8 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     	case 0xF://Search variants
         	adapter = new UAdapter();
         	adapter.setPadding(10);
-        	//adapter.put(resources.context_menu_icon, "По ID", 22);
-        	//adapter.put(resources.context_menu_icon, "По E-Mail", 23);
+        	//adapter.put(resources.context_menu_icon, "РџРѕ ID", 22);
+        	//adapter.put(resources.context_menu_icon, "РџРѕ E-Mail", 23);
         	adapter.put(resources.context_menu_icon, Locale.getString("s_search_type_detail"), 24);
         	dialog = DialogBuilder.createWithNoHeader(ContactListActivity.this,
         			adapter,
@@ -1588,7 +1588,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     				lay,
     				Gravity.TOP,
     				Locale.getString("s_revoke_auth"),
-            		Locale.getString("s_do_revoke"), "Отмена",
+            		Locale.getString("s_do_revoke"), "РћС‚РјРµРЅР°",
             		new OnClickListener(){
     					@Override
     					public void onClick(View arg0) {

@@ -190,7 +190,7 @@ public class ChatActivity extends ExFragment implements Callback {
         		}
             	if(contact.getStatus() != -1){
             		adapter.put(resources.context_menu_icon, Locale.getString("s_show_status_message"), 7);
-            		//adapter.put(resources.context_menu_icon, "Передать файл", 6);
+            		//adapter.put(resources.context_menu_icon, "РџРµСЂРµРґР°С‚СЊ С„Р°Р№Р»", 6);
             	}
         	}else{
             	if(contact.auth_flag)

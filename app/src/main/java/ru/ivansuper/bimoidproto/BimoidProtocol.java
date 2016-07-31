@@ -82,7 +82,7 @@ public class BimoidProtocol {
 		tld.writeWord(0x5);
 		tld.writeWord(0x7);
 		tld.writeWord(0x8);
-		tld.writeWord(0xa);//Уведомления о почте
+		tld.writeWord(0xa);//РЈРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РїРѕС‡С‚Рµ
 		data.writeWTLD(tld, 0x1);//CAPS
 		tld = new ByteBuffer(512);
 		tld.writeWord(0x1);

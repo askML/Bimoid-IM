@@ -1,0 +1,26 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 10
+    buildToolsVersion "23.0.2"
+
+    defaultConfig.versionCode = 7
+
+    defaultConfig {
+        applicationId "ru.ivansuper.bimoidim"
+        minSdkVersion 4
+        targetSdkVersion 10
+        versionName "1.0.4.3"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:13.0.0'
+}

@@ -22,7 +22,7 @@ public class AntispamBot {
 			profile.banlist.increase(id);
 			Log.e("AntispamBot", "User: "+id+" | increasing tryes");
 		}
-		String answer = PreferenceManager.getDefaultSharedPreferences(resources.ctx).getString("antispam_answer", "Russia, Россия");
+		String answer = PreferenceManager.getDefaultSharedPreferences(resources.ctx).getString("antispam_answer", "Russia, Р РѕСЃСЃРёСЏ");
 		String[] variants = answer.split(",");
 		for(String variant: variants){
 			if(message.trim().equalsIgnoreCase(variant.trim())){
@@ -35,10 +35,10 @@ public class AntispamBot {
 		return NEED_QUEST;
 	}
 	public static final String getQuestion(){
-		return PreferenceManager.getDefaultSharedPreferences(resources.ctx).getString("antispam_question", "[EN] Antispam: What is the biggest country in the world?_[RU] Антиспам: Самая большая по площади страна в мире?").replace("_", "\n");
+		return PreferenceManager.getDefaultSharedPreferences(resources.ctx).getString("antispam_question", "[EN] Antispam: What is the biggest country in the world?_[RU] РђРЅС‚РёСЃРїР°Рј: РЎР°РјР°СЏ Р±РѕР»СЊС€Р°СЏ РїРѕ РїР»РѕС‰Р°РґРё СЃС‚СЂР°РЅР° РІ РјРёСЂРµ?").replace("_", "\n");
 	}
 	public static final String getAccepted(){
-		return PreferenceManager.getDefaultSharedPreferences(resources.ctx).getString("antispam_accepted_msg", "[EN] Thank you. Now you can send messages directly to my contact list._[RU] Спасибо. Теперь вы можете писать прямо мне.").replace("_", "\n");
+		return PreferenceManager.getDefaultSharedPreferences(resources.ctx).getString("antispam_accepted_msg", "[EN] Thank you. Now you can send messages directly to my contact list._[RU] РЎРїР°СЃРёР±Рѕ. РўРµРїРµСЂСЊ РІС‹ РјРѕР¶РµС‚Рµ РїРёСЃР°С‚СЊ РїСЂСЏРјРѕ РјРЅРµ.").replace("_", "\n");
 	}
 	public static final boolean enabled(){
 		return PreferenceManager.getDefaultSharedPreferences(resources.ctx).getBoolean("antispam_enabled", false);

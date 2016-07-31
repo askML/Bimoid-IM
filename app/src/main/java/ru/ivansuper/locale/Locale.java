@@ -105,7 +105,7 @@ public class Locale {
 	
 	public static ArrayList<Language> getAvailable(){
 		final ArrayList<Language> list = new ArrayList<Language>();
-		Language language = new Language("Русская локализация", "Русский", "Ivansuper", "locale/RU.txt", true);
+		Language language = new Language("Р СѓСЃСЃРєР°СЏ Р»РѕРєР°Р»РёР·Р°С†РёСЏ", "Р СѓСЃСЃРєРёР№", "Ivansuper", "locale/RU.txt", true);
 		list.add(language);
 		language = new Language("English localization", "English", "Ivansuper", "locale/EN.txt", true);
 		list.add(language);
