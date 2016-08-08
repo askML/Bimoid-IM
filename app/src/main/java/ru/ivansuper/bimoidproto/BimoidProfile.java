@@ -2341,7 +2341,7 @@ public class BimoidProfile {
 		for(RosterItem item: contacts){
 			if(item.type != RosterItem.OBIMP_CONTACT) continue;
 			Contact contact = (Contact)item;
-			if(contact.getID().equals(id) && contact.getTransportId() == tid){
+			if(contact.getID().equalsIgnoreCase(id) && contact.getTransportId() == tid){
 				return contact;
 			}
 		}

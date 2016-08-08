@@ -127,7 +127,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
         super.onCreate(savedInstanceState);
 		if(resources.IT_IS_TABLET) getWindow().addFlags(0x1000000);//Hardware acceleration
         setContentView(R.layout.contact_list);
-        setVolumeControlStream(0x3);
+        setVolumeControlStream(android.media.AudioManager.STREAM_MUSIC);
         initViews();
        	service = resources.service;
         sp = PreferenceManager.getDefaultSharedPreferences(this);
@@ -522,7 +522,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     						removeDialog(type);
     						ClipboardManager cm = (ClipboardManager)getSystemService(Service.CLIPBOARD_SERVICE);
     						cm.setText(stack);
-    						Toast.makeText(ContactListActivity.this, Locale.getString("s_copied"), Toast.LENGTH_SHORT);
+    						Toast.makeText(ContactListActivity.this, Locale.getString("s_copied"), Toast.LENGTH_SHORT).show();
     					}
     				});
         	last_shown_notify_dialog = dialog;

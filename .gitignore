@@ -355,3 +355,4 @@ fabric.properties
 
 obj/
 *.keystore
+gradle.properties
