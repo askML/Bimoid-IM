@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import android.content.res.Resources;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import ru.ivansuper.BimoidInterface.ColorScheme;
 import ru.ivansuper.bimoidim.ChatActivity;
 import ru.ivansuper.bimoidim.PB;
+import ru.ivansuper.bimoidim.R;
 import ru.ivansuper.bimoidim.resources;
 import ru.ivansuper.bimoidim.utilities;
 import ru.ivansuper.bimoidproto.BEX;
@@ -499,13 +501,13 @@ public class FileReceiver extends FileTransfer {
 				transfer_accept.setVisibility(View.GONE);
 				switch(getMode()){
 				case FileReceiver.MODE_NORMAL:
-					view.setText(Locale.getString("s_file_transfer_label_1"));
+					view.setText(Resources.getSystem().getString(R.string.s_file_transfer_label_1));
 					break;
 				case FileReceiver.MODE_REVERSED:
-					view.setText(Locale.getString("s_file_transfer_label_2"));
+					view.setText(Resources.getSystem().getString(R.string.s_file_transfer_label_2));
 					break;
 				case FileReceiver.MODE_PROXY:
-					view.setText(Locale.getString("s_file_transfer_label_3"));
+					view.setText(Resources.getSystem().getString(R.string.s_file_transfer_label_3));
 					break;
 				}
 				view.relayout();
@@ -516,16 +518,16 @@ public class FileReceiver extends FileTransfer {
 				progress.setMax(getTotalSize());
 				progress.setProgress(getTotalReceived());
 				transfer_accept.setVisibility(View.GONE);
-				view.setText(utilities.match(Locale.getString("s_file_receiving"), new String[]{String.valueOf(getReceivedFilesCount()+1), String.valueOf(getFilesCount()), getProcessingFileName(), String.valueOf(getPercentage()), String.valueOf(getProcessingSize())}));
+				view.setText(utilities.match(Resources.getSystem().getString(R.string.s_file_receiving), new String[]{String.valueOf(getReceivedFilesCount()+1), String.valueOf(getFilesCount()), getProcessingFileName(), String.valueOf(getPercentage()), String.valueOf(getProcessingSize())}));
 				view.relayout();
 				break;
 			case FileReceiver.STATE_RECEIVED:
 				progress.setVisibility(View.GONE);
 				transfer_buttons.setVisibility(View.GONE);
 				if(getFilesCount() > 1){
-					view.setText(Locale.getString("s_files_received"));
+					view.setText(Resources.getSystem().getString(R.string.s_files_received));
 				}else{
-					view.setText(utilities.match(Locale.getString("s_file_received"), new String[]{getProcessingFileName()}));
+					view.setText(utilities.match(Resources.getSystem().getString(R.string.s_file_received), new String[]{getProcessingFileName()}));
 				}
 				view.relayout();
 				break;
@@ -533,9 +535,9 @@ public class FileReceiver extends FileTransfer {
 				progress.setVisibility(View.GONE);
 				transfer_buttons.setVisibility(View.GONE);
 				if(canceled()){
-					view.setText(Locale.getString("s_file_receiving_canceled"));
+					view.setText(Resources.getSystem().getString(R.string.s_file_receiving_canceled));
 				}else{
-					view.setText(Locale.getString("s_file_receiving_error"));
+					view.setText(Resources.getSystem().getString(R.string.s_file_receiving_error));
 				}
 				view.relayout();
 				break;

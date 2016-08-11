@@ -19,12 +19,12 @@ android {
 
     compileSdkVersion 10
     buildToolsVersion "23.0.2"
-    defaultConfig.versionCode = 8
+    defaultConfig.versionCode = 9
     defaultConfig {
         applicationId "ru.ivansuper.bimoidim"
         minSdkVersion 4
         targetSdkVersion 10
-        versionName "1.0.4.4"
+        versionName "1.0.4.5"
     }
 
     buildTypes {

@@ -11,6 +11,7 @@ import ru.ivansuper.locale.Locale;
 
 import android.app.Dialog;
 import android.app.Service;
+import android.content.res.Resources;
 import android.text.ClipboardManager;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -219,12 +220,15 @@ public class MyTextView extends View {
 		return false;//super.dispatchTouchEvent(event);
 	}
 	private final void showMyContextMenu(){
+
+		Resources res = getResources();
+
 		final UAdapter adp = new UAdapter();
 		adp.setMode(UAdapter.FORCE_HIDE_ICON);
 		adp.setTextSize(16);
 		adp.setPadding(16);
-		adp.put(Locale.getString("s_do_open"), 0);
-		adp.put(Locale.getString("s_do_copy"), 1);
+		adp.put(res.getString(R.string.s_do_open), 0);
+		adp.put(res.getString(R.string.s_do_copy), 1);
 		mContextMenu = new Dialog(resources.service, R.style.DialogTheme);
 		Window wnd = mContextMenu.getWindow();
 		LayoutParams lp = wnd.getAttributes();
@@ -254,7 +258,7 @@ public class MyTextView extends View {
 							case 1:
 								ClipboardManager cm = (ClipboardManager)getContext().getSystemService(Service.CLIPBOARD_SERVICE);
 								cm.setText(mContextURL.getURL());
-								Toast.makeText(getContext(), Locale.getString("s_copied"), Toast.LENGTH_SHORT).show();
+								Toast.makeText(getContext(), R.string.s_copied, Toast.LENGTH_SHORT).show();
 								break;
 							}
 						}else{

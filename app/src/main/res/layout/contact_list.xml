@@ -13,7 +13,8 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:id="@+id/contacts_fragment"
@@ -40,7 +41,8 @@
                     android:layout_height="wrap_content"
                     android:alwaysDrawnWithCache="false"
                     android:background="@drawable/contactlist_bottom_panel"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:baselineAligned="false">
 
                     <HorizontalScrollView
                         android:layout_width="0dp"
@@ -53,7 +55,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:alwaysDrawnWithCache="false"
-                            android:animationCache="false" />
+                            android:animationCache="false"
+                            android:orientation="vertical" />
                     </HorizontalScrollView>
 
                     <LinearLayout

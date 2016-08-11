@@ -1,12 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent" android:orientation="vertical" android:alwaysDrawnWithCache="false">
-    <LinearLayout android:id="@+id/chat_top_panel" android:alwaysDrawnWithCache="false" android:layout_width="fill_parent" android:gravity="center_vertical" android:layout_height="wrap_content" android:background="@drawable/chat_top_panel">
-        <ImageView android:drawingCacheQuality="low" android:src="@drawable/sts_online" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/chat_user_sts"></ImageView>
-        <ImageView android:drawingCacheQuality="low" android:src="@drawable/sts_connecting" android:layout_marginLeft="2sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/chat_user_ests"></ImageView>
-        <TextView android:inputType="text" android:layout_weight="1" android:id="@+id/chat_user_nickname" android:layout_height="wrap_content" android:ellipsize="marquee" android:textSize="18sp" android:text="Nickname" android:layout_width="fill_parent" android:textColor="#ffffffff" android:paddingLeft="2sp" android:drawingCacheQuality="low"></TextView>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:alwaysDrawnWithCache="false"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/chat_top_panel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:alwaysDrawnWithCache="false"
+        android:background="@drawable/chat_top_panel"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/chat_user_sts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawingCacheQuality="low"
+            android:src="@drawable/sts_online"/>
+
+        <ImageView
+            android:id="@+id/chat_user_ests"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2sp"
+            android:drawingCacheQuality="low"
+            android:src="@drawable/sts_connecting"/>
+
+        <TextView
+            android:id="@+id/chat_user_nickname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawingCacheQuality="low"
+            android:ellipsize="marquee"
+            android:inputType="text"
+            android:paddingLeft="2sp"
+            android:text="Nickname"
+            android:textColor="#ffffffff"
+            android:textSize="18sp"/>
 
         <TextView
             android:id="@+id/chat_user_client"
@@ -20,28 +53,56 @@
             android:singleLine="true"
             android:text="Client name"
             android:textColor="#ffc3f136"
-            android:textSize="14sp" >
+            android:textSize="14sp">
 
-</TextView>
+        </TextView>
     </LinearLayout>
 
     <ListView
         android:id="@+id/messagesList"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" android:layout_weight="1" android:divider="#77000000" android:transcriptMode="normal" android:stackFromBottom="true" android:drawingCacheQuality="low" android:alwaysDrawnWithCache="false">
-    </ListView>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:alwaysDrawnWithCache="false"
+        android:divider="#77000000"
+        android:drawingCacheQuality="low"
+        android:stackFromBottom="true"
+        android:transcriptMode="normal"/>
 
-    <LinearLayout android:gravity="center_vertical" android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/chat_bottom_panel" android:background="@drawable/chat_bottom_panel">
+    <LinearLayout
+        android:id="@+id/chat_bottom_panel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/chat_bottom_panel"
+        android:gravity="center_vertical">
 
         <Button
             android:id="@+id/chat_menu"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:drawableLeft="@drawable/menu_icon"/>
+            android:drawableLeft="@drawable/menu_icon" />
 
-        <EditText android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/chat_input" android:layout_weight="1" android:minHeight="32sp" android:maxLines="5"/>
-        <Button android:gravity="center_vertical|center_horizontal" android:layout_height="fill_parent" android:layout_width="wrap_content" android:id="@+id/chat_smileys_select" android:drawableLeft="@drawable/smile_button"></Button>
-        <Button android:layout_height="fill_parent" android:layout_width="wrap_content" android:id="@+id/chat_send_button" android:drawableRight="@drawable/msg_send" android:gravity="center_vertical|center_horizontal"></Button>
+        <EditText
+            android:id="@+id/chat_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxLines="5"
+            android:minHeight="32sp" />
+
+        <Button
+            android:id="@+id/chat_smileys_select"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:drawableLeft="@drawable/smile_button"
+            android:gravity="center_vertical|center_horizontal"/>
+
+        <Button
+            android:id="@+id/chat_send_button"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:drawableRight="@drawable/msg_send"
+            android:gravity="center_vertical|center_horizontal"/>
     </LinearLayout>
-    
+
 </LinearLayout>

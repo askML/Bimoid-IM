@@ -87,14 +87,14 @@ public class HistoryActivity extends Activity {
     	if(ColorScheme.initialized) divider.setBackgroundColor(ColorScheme.getColor(4));
     	TextView status = (TextView)findViewById(R.id.history_status);
     	if(ColorScheme.initialized) status.setTextColor(ColorScheme.getColor(12));
-    	status.setText(Locale.getString("s_no_messages_history"));
+    	status.setText(getString(R.string.s_no_messages_history));
     	Interface.attachBackground((LinearLayout)findViewById(R.id.header), Interface.history_top_panel);
     	Interface.attachBackground((FrameLayout)findViewById(R.id.history_list_field), Interface.history_messages_back);
     	Intent i = getIntent();
     	String[] raw = i.getAction().split(";;;%;;;");
     	contact = raw[0];
     	profile = raw[1];
-		label.setText(raw[2]+"\n"+Locale.getString("s_messages_history"));
+		label.setText(raw[2]+"\n"+getString(R.string.s_messages_history));
 		history_database = new File(resources.DATA_PATH+raw[1]+"/"+raw[0]);
 		if(history_database.exists()){
 			if(history_database.length() > 0){
@@ -109,9 +109,9 @@ public class HistoryActivity extends Activity {
     	case 0x0://Main menu
     		UAdapter adapter = new UAdapter();
         	adapter.setPadding(10);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_do_copy"), 0);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_do_copy), 0);
         	dialog = DialogBuilder.create(HistoryActivity.this,
-        			Locale.getString("s_menu"),
+        			getString(R.string.s_menu),
         			adapter,
     				Gravity.CENTER,
     				new OnItemClickListener(){
@@ -123,7 +123,7 @@ public class HistoryActivity extends Activity {
 							switch((int)arg0.getAdapter().getItemId(arg2)){
 							case 0:
 								cm.setText(item.message);
-								Toast.makeText(HistoryActivity.this, Locale.getString("s_copied"), Toast.LENGTH_SHORT).show();
+								Toast.makeText(HistoryActivity.this, getString(R.string.s_copied), Toast.LENGTH_SHORT).show();
 								break;
 							}
 						}
@@ -133,7 +133,7 @@ public class HistoryActivity extends Activity {
     	return dialog;
     }
     private void startLoadingHistory(){
-    	progress = DialogBuilder.createProgress(this, Locale.getString("s_please_wait"), false);
+    	progress = DialogBuilder.createProgress(this, getString(R.string.s_please_wait), false);
     	progress.show();
     	Thread load_thread = new Thread(){
     		@Override

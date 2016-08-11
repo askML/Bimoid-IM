@@ -85,7 +85,7 @@ public class RegistrationActivity extends Activity implements Callback{
     	case 0x0://Message dialog
     		dialog = DialogBuilder.createOk(this, dialog_header,
     				dialog_message,
-    				Locale.getString("s_close"),
+    				getString(R.string.s_close),
     				Gravity.TOP, new OnClickListener(){
 						@Override
 						public void onClick(View arg0) {
@@ -94,7 +94,7 @@ public class RegistrationActivity extends Activity implements Callback{
     				});
     		break;
     	case 0x1:
-    		dialog = DialogBuilder.createProgress(this, Locale.getString("s_profile_registration_in_progress"), true);
+    		dialog = DialogBuilder.createProgress(this, getString(R.string.s_profile_registration_in_progress), true);
     		break;
     	}
     	return dialog;
@@ -142,28 +142,28 @@ public class RegistrationActivity extends Activity implements Callback{
 				String email_ = email.getText().toString();
 				if(id_.length() < 3){
 					service.media.playEvent(Media.INFO_MSG);
-					showNotify(Locale.getString("s_information"), Locale.getString("s_profile_registration_error_1"));
+					showNotify(getString(R.string.s_information), getString(R.string.s_profile_registration_error_1));
 					return;
 				}
 				if(service.profiles.isExist(id_)){
 					service.media.playEvent(Media.INFO_MSG);
 					service.media.playEvent(Media.SVC_MSG);
-					showNotify(Locale.getString("s_information"), Locale.getString("s_profile_registration_error_2"));
+					showNotify(getString(R.string.s_information), getString(R.string.s_profile_registration_error_2));
 					return;
 				}
 				if(!pass_.equals(pass_dbl_)){
 					service.media.playEvent(Media.INFO_MSG);
-					showNotify(Locale.getString("s_information"), Locale.getString("s_profile_registration_error_3"));
+					showNotify(getString(R.string.s_information), getString(R.string.s_profile_registration_error_3));
 					return;
 				}
 				if(pass_.length() < 3){
 					service.media.playEvent(Media.INFO_MSG);
-					showNotify(Locale.getString("s_information"), Locale.getString("s_profile_registration_error_4"));
+					showNotify(getString(R.string.s_information), getString(R.string.s_profile_registration_error_4));
 					return;
 				}
 				if(email_.length() < 10){
 					service.media.playEvent(Media.INFO_MSG);
-					showNotify(Locale.getString("s_information"), Locale.getString("s_profile_registration_error_5"));
+					showNotify(getString(R.string.s_information), getString(R.string.s_profile_registration_error_5));
 					return;
 				}
 				registrator = new Registrator(service);
@@ -171,7 +171,7 @@ public class RegistrationActivity extends Activity implements Callback{
 				showDialog(1);
 			}
 	    });
-	    do_reg.setText(Locale.getString("s_reg_do_register"));
+	    do_reg.setText(getString(R.string.s_reg_do_register));
 	    cancel_reg = (Button)findViewById(R.id.reg_cancel);
 	    if(ColorScheme.initialized) cancel_reg.setTextColor(ColorScheme.getColor(24));
 	    cancel_reg.setOnClickListener(new OnClickListener(){
@@ -180,7 +180,7 @@ public class RegistrationActivity extends Activity implements Callback{
 				finish();
 			}
 	    });
-	    cancel_reg.setText(Locale.getString("s_reg_cancel_register"));
+	    cancel_reg.setText(getString(R.string.s_reg_cancel_register));
 	    back = (Button)findViewById(R.id.reg_back);
 	    if(ColorScheme.initialized) back.setTextColor(ColorScheme.getColor(24));
 	    back.setOnClickListener(new OnClickListener(){
@@ -189,7 +189,7 @@ public class RegistrationActivity extends Activity implements Callback{
 				finish();
 			}
 	    });
-	    back.setText(Locale.getString("s_reg_back"));
+	    back.setText(getString(R.string.s_reg_back));
 	    data_field = (LinearLayout)findViewById(R.id.reg_datafield);
 	    success_field = (LinearLayout)findViewById(R.id.reg_success_field);
         otherInit();
@@ -239,6 +239,6 @@ public class RegistrationActivity extends Activity implements Callback{
 	private void handleRegError(){
 		removeDialog(1);
 		service.media.playEvent(Media.SVC_MSG);
-		showNotify(Locale.getString("s_error_message_header"), registrator.RESULT_MSG);
+		showNotify(getString(R.string.s_error_message_header), registrator.RESULT_MSG);
 	}
 }

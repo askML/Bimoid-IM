@@ -107,11 +107,11 @@ public class DetailSearchActivity extends Activity implements Callback{
 				showDialog(0);
 			}
     	});
-    	set_criteries.setText(Locale.getString("s_set_detail_search_params"));
+    	set_criteries.setText(getString(R.string.s_set_detail_search_params));
     	begin_search = (Button)findViewById(R.id.detail_search_begin_search);
 	    if(ColorScheme.initialized) begin_search.setTextColor(ColorScheme.getColor(24));
 	    Interface.attachButtonStyle(begin_search);
-	    begin_search.setText(Locale.getString("s_do_search"));
+	    begin_search.setText(getString(R.string.s_do_search));
 	    Interface.attachBackground((LinearLayout)findViewById(R.id.detail_search_header_field), Interface.search_top_panel);
 	    Interface.attachBackground((LinearLayout)findViewById(R.id.detail_search_results_field), Interface.search_list_back);
     }
@@ -123,7 +123,7 @@ public class DetailSearchActivity extends Activity implements Callback{
 			@Override
 			public void onClick(View v) {
 				if(service.profiles.getConnectedProfilesCount() == 0) return;
-				progress_dialog = DialogBuilder.createProgress(DetailSearchActivity.this, Locale.getString("s_search_in_progress"), true);
+				progress_dialog = DialogBuilder.createProgress(DetailSearchActivity.this, getString(R.string.s_search_in_progress), true);
 				progress_dialog.show();
 				adapter.clear();
 				if(profile == null){
@@ -182,7 +182,7 @@ public class DetailSearchActivity extends Activity implements Callback{
 					showDialog(2);
 				}
     		});
-    		gender.setText(Locale.getString("s_do_select"));
+    		gender.setText(getString(R.string.s_do_select));
     		final Button age = (Button)lay.findViewById(R.id.details_dialog_age);
     	    if(ColorScheme.initialized) age.setTextColor(ColorScheme.getColor(24));
     	    Interface.attachButtonStyle(age);
@@ -194,7 +194,7 @@ public class DetailSearchActivity extends Activity implements Callback{
 					showDialog(2);
 				}
     		});
-    		age.setText(Locale.getString("s_do_select"));
+    		age.setText(getString(R.string.s_do_select));
     		final Button zodiac = (Button)lay.findViewById(R.id.details_dialog_zodiac);
     	    if(ColorScheme.initialized) zodiac.setTextColor(ColorScheme.getColor(24));
     	    Interface.attachButtonStyle(zodiac);
@@ -206,7 +206,7 @@ public class DetailSearchActivity extends Activity implements Callback{
 					showDialog(2);
 				}
     		});
-    		zodiac.setText(Locale.getString("s_do_select"));
+    		zodiac.setText(getString(R.string.s_do_select));
     		final Button country = (Button)lay.findViewById(R.id.details_dialog_country);
     	    if(ColorScheme.initialized) country.setTextColor(ColorScheme.getColor(24));
     	    Interface.attachButtonStyle(country);
@@ -218,7 +218,7 @@ public class DetailSearchActivity extends Activity implements Callback{
 					showDialog(2);
 				}
     		});
-    		country.setText(Locale.getString("s_do_select"));
+    		country.setText(getString(R.string.s_do_select));
     		final Button language = (Button)lay.findViewById(R.id.details_dialog_language);
     	    if(ColorScheme.initialized) language.setTextColor(ColorScheme.getColor(24));
     	    Interface.attachButtonStyle(language);
@@ -230,7 +230,7 @@ public class DetailSearchActivity extends Activity implements Callback{
 					showDialog(2);
 				}
     		});
-    		language.setText(Locale.getString("s_do_select"));
+    		language.setText(getString(R.string.s_do_select));
     		gender_preview = (TextView)lay.findViewById(R.id.details_dialog_gender_preview);
     		if(ColorScheme.initialized) gender_preview.setTextColor(ColorScheme.getColor(12));
     		gender_preview.setText(AccountInfoContainer.genders[search_criteries.gender_]);
@@ -250,12 +250,12 @@ public class DetailSearchActivity extends Activity implements Callback{
     		if(ColorScheme.initialized) only_online.setTextColor(ColorScheme.getColor(12));
     		Interface.attachCheckBoxStyle(only_online);
     		only_online.setChecked(search_criteries.online_);
-    		only_online.setText(Locale.getString("s_search_params_11"));
+    		only_online.setText(getString(R.string.s_search_params_11));
     		dialog = DialogBuilder.createYesNo(DetailSearchActivity.this,
     				lay,
     				Gravity.TOP,
-    				Locale.getString("s_search_params"),
-            		Locale.getString("s_apply"), Locale.getString("s_cancel"),
+    				getString(R.string.s_search_params),
+            		getString(R.string.s_apply), getString(R.string.s_cancel),
             		new OnClickListener(){
     					@Override
     					public void onClick(View arg0) {
@@ -278,7 +278,7 @@ public class DetailSearchActivity extends Activity implements Callback{
     	case 0x1://Notify dialog
     		if(dialog_for_display == null) return null;
         	dialog = DialogBuilder.createOk(DetailSearchActivity.this,
-        			dialog_for_display.header, dialog_for_display.text, Locale.getString("s_close"),
+        			dialog_for_display.header, dialog_for_display.text, getString(R.string.s_close),
         			Gravity.TOP, new OnClickListener(){
     					@Override
     					public void onClick(View v) {
@@ -367,9 +367,9 @@ public class DetailSearchActivity extends Activity implements Callback{
     	case 0x3://Search results context
         	UAdapter adapter = new UAdapter();
         	adapter.setPadding(10);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_add_contact"), 0);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_add_contact), 0);
         	dialog = DialogBuilder.create(DetailSearchActivity.this,
-        			Locale.getString("s_menu"),
+        			getString(R.string.s_menu),
         			adapter,
     				Gravity.CENTER,
     				new OnItemClickListener(){
@@ -420,7 +420,7 @@ public class DetailSearchActivity extends Activity implements Callback{
 			adapter_a.setSelected(0);
 			Vector<Group> list1 = profile.getGroups();
 			adapter_b.clear();
-			adapter_b.put("["+Locale.getString("s_without_group")+"]", 0);
+			adapter_b.put("["+getString(R.string.s_without_group)+"]", 0);
     		for(int j=0; j<list1.size(); j++)
     			adapter_b.put(list1.get(j).getName(), list1.get(j).getItemId());
     		
@@ -436,8 +436,8 @@ public class DetailSearchActivity extends Activity implements Callback{
     		dialog = DialogBuilder.createYesNo(DetailSearchActivity.this,
     				lay,
     				Gravity.TOP,
-    				Locale.getString("s_add_contact"),
-            		Locale.getString("s_do_add"), Locale.getString("s_cancel"),
+    				getString(R.string.s_add_contact),
+            		getString(R.string.s_do_add), getString(R.string.s_cancel),
             		new OnClickListener(){
     					@Override
     					public void onClick(View arg0) {

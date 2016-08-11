@@ -86,40 +86,40 @@ public class ProfilesActivity extends Activity {
     		if(ColorScheme.initialized) utilities.setLabel(((TextView)lay.findViewById(R.id.l1)), "s_login").setTextColor(ColorScheme.getColor(12));
     		if(ColorScheme.initialized) utilities.setLabel(((TextView)lay.findViewById(R.id.l2)), "s_password").setTextColor(ColorScheme.getColor(12));
     		final EditText ID = (EditText)lay.findViewById(R.id.profile_dataview_id);
-    		ID.setHint(Locale.getString("s_login_example"));
+    		ID.setHint(getString(R.string.s_login_example));
     		if(ColorScheme.initialized) ID.setTextColor(ColorScheme.getColor(13));
         	Interface.attachEditTextStyle(ID);
     		final EditText PASS = (EditText)lay.findViewById(R.id.profile_dataview_pass);
     		if(ColorScheme.initialized) PASS.setTextColor(ColorScheme.getColor(13));
         	Interface.attachEditTextStyle(PASS);
         	final CheckBox AUTO = (CheckBox)lay.findViewById(R.id.profile_dataview_autoconnect);
-        	AUTO.setText(Locale.getString("s_autoconnect"));
+        	AUTO.setText(getString(R.string.s_autoconnect));
         	if(ColorScheme.initialized) AUTO.setTextColor(ColorScheme.getColor(12));
         	Interface.attachCheckBoxStyle(AUTO);
         	final CheckBox SSL = (CheckBox)lay.findViewById(R.id.profile_dataview_ssl);
         	if(ColorScheme.initialized) SSL.setTextColor(ColorScheme.getColor(12));
         	Interface.attachCheckBoxStyle(SSL);
-    		dialog = DialogBuilder.createYesNo(this, lay, Gravity.TOP, Locale.getString("s_adding"), Locale.getString("s_do_add"), Locale.getString("s_cancel"), new OnClickListener(){
+    		dialog = DialogBuilder.createYesNo(this, lay, Gravity.TOP, getString(R.string.s_adding), getString(R.string.s_do_add), getString(R.string.s_cancel), new OnClickListener(){
     			@Override
     			public void onClick(View arg0) {
     				String id_s = ID.getText().toString().toLowerCase();
     				String[] params = id_s.split("@");
     				if(params.length != 2){
-    					Toast.makeText(ProfilesActivity.this, Locale.getString("s_add_profile_error_1"), Toast.LENGTH_LONG).show();
+    					Toast.makeText(ProfilesActivity.this, getString(R.string.s_add_profile_error_1), Toast.LENGTH_LONG).show();
     					return;
     				}
     				if(params[1].trim().length() < 5){
-    					Toast.makeText(ProfilesActivity.this, Locale.getString("s_add_profile_error_2"), Toast.LENGTH_LONG).show();
+    					Toast.makeText(ProfilesActivity.this, getString(R.string.s_add_profile_error_2), Toast.LENGTH_LONG).show();
     					return;
     				}
     				String pass_s = PASS.getText().toString();
     				ID.setText(id_s);
     				if((params[0].trim().length() < 3) || (pass_s.length() == 0)){
-    					Toast.makeText(ProfilesActivity.this, Locale.getString("s_add_profile_error_3"), Toast.LENGTH_LONG).show();
+    					Toast.makeText(ProfilesActivity.this, getString(R.string.s_add_profile_error_3), Toast.LENGTH_LONG).show();
     					return;
     				}
     				if(pm.isExist(id_s)){
-    					Toast.makeText(ProfilesActivity.this, Locale.getString("s_add_profile_error_4"), Toast.LENGTH_LONG).show();
+    					Toast.makeText(ProfilesActivity.this, getString(R.string.s_add_profile_error_4), Toast.LENGTH_LONG).show();
     					return;
     				}
     				BimoidProfile profile = new BimoidProfile(service, id_s, pass_s, AUTO.isChecked(), SSL.isChecked());
@@ -143,10 +143,10 @@ public class ProfilesActivity extends Activity {
     	case 0x1://Context menu
         	UAdapter adapter = new UAdapter();
         	adapter.setPadding(10);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_do_change"), 2);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_do_delete"), 3);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_do_change), 2);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_do_delete), 3);
         	dialog = DialogBuilder.create(ProfilesActivity.this,
-        			Locale.getString("s_menu"),
+        			getString(R.string.s_menu),
         			adapter,
     				Gravity.CENTER,
     				new context_menu_listener());
@@ -154,10 +154,10 @@ public class ProfilesActivity extends Activity {
     	case 0x2://Menu
         	adapter = new UAdapter();
         	adapter.setPadding(10);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_add_profile"), 0);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_reg_and_add_profile"), 1);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_add_profile), 0);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_reg_and_add_profile), 1);
         	dialog = DialogBuilder.create(ProfilesActivity.this,
-        			Locale.getString("s_menu"),
+        			getString(R.string.s_menu),
         			adapter,
     				Gravity.CENTER,
     				new context_menu_listener());
@@ -167,7 +167,7 @@ public class ProfilesActivity extends Activity {
     		if(ColorScheme.initialized) utilities.setLabel(((TextView)lay1.findViewById(R.id.l1)), "s_login").setTextColor(ColorScheme.getColor(12));
     		if(ColorScheme.initialized) utilities.setLabel(((TextView)lay1.findViewById(R.id.l2)), "s_password").setTextColor(ColorScheme.getColor(12));
     		final EditText ID1 = (EditText)lay1.findViewById(R.id.profile_dataview_id);
-    		ID1.setHint(Locale.getString("s_login_example"));
+    		ID1.setHint(getString(R.string.s_login_example));
     		if(ColorScheme.initialized) ID1.setTextColor(ColorScheme.getColor(13));
     		ID1.setEnabled(false);
         	Interface.attachEditTextStyle(ID1);
@@ -178,7 +178,7 @@ public class ProfilesActivity extends Activity {
     		PASS1.setText(context_profile.password);
     		PASS1.requestFocus();
         	final CheckBox AUTO1 = (CheckBox)lay1.findViewById(R.id.profile_dataview_autoconnect);
-        	AUTO1.setText(Locale.getString("s_autoconnect"));
+        	AUTO1.setText(getString(R.string.s_autoconnect));
         	if(ColorScheme.initialized) AUTO1.setTextColor(ColorScheme.getColor(12));
         	Interface.attachCheckBoxStyle(AUTO1);
         	AUTO1.setChecked(context_profile.autoconnect);
@@ -186,23 +186,23 @@ public class ProfilesActivity extends Activity {
         	if(ColorScheme.initialized) SSL1.setTextColor(ColorScheme.getColor(12));
         	Interface.attachCheckBoxStyle(SSL1);
         	SSL1.setChecked(context_profile.use_ssl);
-        	dialog = DialogBuilder.createYesNo(this, lay1, Gravity.TOP, Locale.getString("s_profile_correction"), Locale.getString("s_apply"), Locale.getString("s_cancel"), new OnClickListener(){
+        	dialog = DialogBuilder.createYesNo(this, lay1, Gravity.TOP, getString(R.string.s_profile_correction), getString(R.string.s_apply), getString(R.string.s_cancel), new OnClickListener(){
     			@Override
     			public void onClick(View arg0) {
     				String id_s = ID1.getText().toString().toLowerCase();
     				String[] params = id_s.split("@");
     				if(params.length != 2){
-    					Toast.makeText(ProfilesActivity.this, Locale.getString("s_add_profile_error_1"), Toast.LENGTH_LONG).show();
+    					Toast.makeText(ProfilesActivity.this, getString(R.string.s_add_profile_error_1), Toast.LENGTH_LONG).show();
     					return;
     				}
     				if(params[1].trim().length() < 5){
-    					Toast.makeText(ProfilesActivity.this, Locale.getString("s_add_profile_error_2"), Toast.LENGTH_LONG).show();
+    					Toast.makeText(ProfilesActivity.this, getString(R.string.s_add_profile_error_2), Toast.LENGTH_LONG).show();
     					return;
     				}
     				String pass_s = PASS1.getText().toString();
     				ID1.setText(id_s);
     				if((params[0].trim().length() < 3) || (pass_s.length() == 0)){
-    					Toast.makeText(ProfilesActivity.this, Locale.getString("s_add_profile_error_3"), Toast.LENGTH_LONG).show();
+    					Toast.makeText(ProfilesActivity.this, getString(R.string.s_add_profile_error_3), Toast.LENGTH_LONG).show();
     					return;
     				}
     				context_profile.ID = params[0];

@@ -60,16 +60,16 @@ public class SkinsActivity extends Activity {
 				PreferenceManager.getDefaultSharedPreferences(resources.ctx).edit().putString("current_skin", selected).commit();
 				fill();
 				Interface.forceLoad();
-				Toast.makeText(resources.ctx, Locale.getString("s_selected_skin_saved"), Toast.LENGTH_SHORT).show();
+				Toast.makeText(resources.ctx, getString(R.string.s_selected_skin_saved), Toast.LENGTH_SHORT).show();
 				if(resources.service != null) resources.service.refreshContactListInterface();
 			}
 		});
-		apply.setText(Locale.getString("s_apply_skin"));
+		apply.setText(getString(R.string.s_apply_skin));
         fill();
 	}
 	private void fill(){
 		skins_adapter.clear();
-		skins_adapter.put(Locale.getString("s_standard_skin"), 0);
+		skins_adapter.put(getString(R.string.s_standard_skin), 0);
 		String current = PreferenceManager.getDefaultSharedPreferences(resources.ctx).getString("current_skin", "#$%INTERNAL#$%");
 		if(current.equals("#$%INTERNAL#$%")){
 			skins_adapter.setSelected(0);

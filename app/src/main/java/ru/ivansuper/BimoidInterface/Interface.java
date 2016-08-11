@@ -220,7 +220,6 @@ public class Interface {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				return;
 			}
 		}
 	}

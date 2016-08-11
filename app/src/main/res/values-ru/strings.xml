@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">BimoidIM</string>
-
     <string name="s_sound_on">Звук включен</string>
     <string name="s_sound_off">Звук выключен</string>
     <string name="s_vibro_on">Вибрация включена</string>
@@ -49,7 +47,7 @@
     <string name="s_information">Информация</string>
     <string name="s_contact_didnt_have_status_message">Контакт не имеет статус сообщения</string>
     <string name="s_about_header">О программе</string>
-    <string name="s_about_text" formatted="false">Bimoid For Android - это клиент для обмена мгновенными сообщениями в сети Интернет по средством протокола OBIMP.\nАвтор программы Кудряков Иван.\nВерсия %%%1\n</string>
+    <string name="s_about_text" formatted="false">Bimoid For Android &#8211; это клиент для обмена мгновенными сообщениями в сети Интернет по средством протокола OBIMP.\nАвтор программы Кудряков Иван.\nВерсия %%%1\n</string>
     <string name="s_accounts">Уч. записи</string>
     <string name="s_no_accounts_notify">Не найдено ни одной учетной записи. Создать?</string>
     <string name="s_yes">Да</string>
@@ -117,7 +115,7 @@
     <string name="s_homepage">Домашняя страница</string>
     <string name="s_about_user">О себе</string>
     <string name="s_interests">Интересы</string>
-    <string name="s_email">E-Mail</string>
+    <string name="s_email">E&#8211;Mail</string>
     <string name="s_phones">Телефоны</string>
     <string name="s_company">Компания</string>
     <string name="s_dept">Отдел</string>
@@ -129,7 +127,7 @@
     <string name="s_transport_params_need_update">Необходимо обновить параметры транспорта</string>
     <string name="s_transport_params">Параметры транспорта</string>
 
-    <string name="s_you_must_be_connected_for_roster_control">Для получения доступа к функциям управления контакт-листом необходимо подключиться.</string>
+    <string name="s_you_must_be_connected_for_roster_control">Для получения доступа к функциям управления контакт&#8211;листом необходимо подключиться.</string>
     <string name="s_search_in_progress">Идет поиск пользователей &#8230;</string>
     <string name="s_search_params">Критерии поиска</string>
     <string name="s_please_wait">Пожалуйста, подождите &#8230;</string>
@@ -147,7 +145,7 @@
     <string name="s_profile_registration_error_2">Эта учетная запись уже сохранена в Вашем клиенте</string>
     <string name="s_profile_registration_error_3">Введенные пароли не совпадают. Проверьте данные</string>
     <string name="s_profile_registration_error_4">Очень короткий пароль. Выберите другой пароль</string>
-    <string name="s_profile_registration_error_5">Некорректный E-Mail</string>
+    <string name="s_profile_registration_error_5">Некорректный E&#8211;Mail</string>
     <string name="s_standard_skin">Стандартный</string>
     <string name="s_selected_skin_saved">Выбор сохранен</string>
     <string name="s_file_browser_notify_1">Нет ни одного выделенного файла</string>
@@ -171,16 +169,16 @@
     <string name="s_socket_error_1">Сервер не найден</string>
     <string name="s_socket_error_2">Не могу подключиться к серверу</string>
     <string name="s_app_error" formatted="false">Внутренняя ошибка программы. Аккаунт %%%1 отключен</string>
-    <string name="s_server_bye_reason_1">Отключено сервером - сервер завершает работу</string>
+    <string name="s_server_bye_reason_1">Отключено сервером &#8211; сервер завершает работу</string>
     <string name="s_server_bye_reason_2">Ваша учетная запись используется с другого компьютера</string>
-    <string name="s_server_bye_reason_3">Отключено сервером - ACCOUNT_KICKED</string>
-    <string name="s_server_bye_reason_4">Отключено сервером - некорректный порядковый номер пакета</string>
-    <string name="s_server_bye_reason_5">Отключено сервером - некорректный тип пакета</string>
-    <string name="s_server_bye_reason_6">Отключено сервером - некорректный подтип пакета</string>
-    <string name="s_server_bye_reason_7">Отключено сервером - таймаут</string>
-    <string name="s_server_bye_reason_8">Отключено сервером - некорректный wTLD</string>
-    <string name="s_server_bye_reason_9">Отключено сервером - доступ запрещен</string>
-    <string name="s_server_bye_reason_10">Отключено сервером - флуд</string>
+    <string name="s_server_bye_reason_3">Отключено сервером &#8211; ACCOUNT_KICKED</string>
+    <string name="s_server_bye_reason_4">Отключено сервером &#8211; некорректный порядковый номер пакета</string>
+    <string name="s_server_bye_reason_5">Отключено сервером &#8211; некорректный тип пакета</string>
+    <string name="s_server_bye_reason_6">Отключено сервером &#8211; некорректный подтип пакета</string>
+    <string name="s_server_bye_reason_7">Отключено сервером &#8211; таймаут</string>
+    <string name="s_server_bye_reason_8">Отключено сервером &#8211; некорректный wTLD</string>
+    <string name="s_server_bye_reason_9">Отключено сервером &#8211; доступ запрещен</string>
+    <string name="s_server_bye_reason_10">Отключено сервером &#8211; флуд</string>
     <string name="s_hello_reason_1">Неверное имя аккаунта</string>
     <string name="s_hello_reason_2">Сервис временно недоступен</string>
     <string name="s_hello_reason_3">Аккаунт забанен</string>
@@ -225,7 +223,7 @@
     <string name="s_link_note_name">Название ссылки</string>
     <string name="s_link_note_text">Адрес ссылки (URL)</string>
     <string name="s_mail_note_name">Имя получателя</string>
-    <string name="s_mail_note_text">E-Mail</string>
+    <string name="s_mail_note_text">E&#8211;Mail</string>
     <string name="s_phone_note_name">Имя владельца</string>
     <string name="s_phone_note_text">Номер телефона</string>
     <string name="s_note_type_text">Текстовая заметка</string>
@@ -239,15 +237,15 @@
     <string name="s_file_select_confirm">Вы подтверждаете свой выбор?</string>
     <string name="s_file_browser_hint">Для подтверждения выбора нажмите кнопку "Меню", или нажмите "Назад" для отмены</string>
     <string name="s_contact_passed_antispam">Контакт прошел антиспам</string>
-    <string name="s_roster_operations_err1">Обновление локальной копии контакт-листа произошло с ошибкой: целевой объект не найден. Переподключитесь во избежание ошибок.</string>
-    <string name="s_roster_operations_err2">Сервер попытался создать объект в контакт-листе. Такой объект уже существует в Вашем контакт-листе.</string>
+    <string name="s_roster_operations_err1">Обновление локальной копии контакт&#8211;листа произошло с ошибкой: целевой объект не найден. Переподключитесь во избежание ошибок.</string>
+    <string name="s_roster_operations_err2">Сервер попытался создать объект в контакт&#8211;листе. Такой объект уже существует в Вашем контакт&#8211;листе.</string>
     <string name="s_operation_result">Результат операции</string>
     <string name="s_operation_result_1">Неверный тип объекта</string>
     <string name="s_operation_result_2">Неверная родительская группа</string>
     <string name="s_operation_result_3">Превышено ограничение длинны имени</string>
     <string name="s_operation_result_4">Неверное имя</string>
     <string name="s_operation_result_5">Контакт/группа уже существует в Вашем списке контактов</string>
-    <string name="s_operation_result_6">Превышен лимит количества объектов в контакт-листе</string>
+    <string name="s_operation_result_6">Превышен лимит количества объектов в контакт&#8211;листе</string>
     <string name="s_operation_result_7">Неверный запрос</string>
     <string name="s_operation_result_8">Некорректный sTLD</string>
     <string name="s_operation_result_9">Недоступно</string>
@@ -283,7 +281,7 @@
     <string name="s_vcard_home_page">Домашняя страница</string>
     <string name="s_vcard_about">О себе</string>
     <string name="s_vcard_interests">Интересы</string>
-    <string name="s_vcard_email">E-Mail</string>
+    <string name="s_vcard_email">E&#8211;Mail</string>
     <string name="s_vcard_tels">Телефоны</string>
     <string name="s_vcard_company">Компания</string>
     <string name="s_vcard_dept">Отдел</string>
@@ -322,7 +320,7 @@
     <string name="s_reg_account">Имя учетной записи (a&#8211;z, 0&#8211;9):</string>
     <string name="s_reg_pass_1">Введите пароль</string>
     <string name="s_reg_pass_2">Введите пароль еще раз</string>
-    <string name="s_reg_email">Введите Ваш E-Mail</string>
+    <string name="s_reg_email">Введите Ваш E&#8211;Mail</string>
     <string name="s_reg_do_register">Зарегистрироваться!</string>
     <string name="s_reg_cancel_register">Отменить регистрацию</string>
     <string name="s_reg_success_label_1">Поздравляем!</string>
@@ -337,7 +335,7 @@
     <string name="s_ms_accounts_desc">Управление учетными записями</string>
     <string name="s_ms_skins">Менеджер скинов</string>
     <string name="s_ms_skins_desc">Управление доступными вариантами оформления</string>
-    <string name="s_ms_contactlist">Настройки контакт-листа</string>
+    <string name="s_ms_contactlist">Настройки контакт&#8211;листа</string>
     <string name="s_ms_groups">Показывать группы</string>
     <string name="s_ms_offline">Показывать оффлайн контакты</string>
     <string name="s_ms_show_addit_desc">Текст статуса под ником</string>
@@ -365,8 +363,8 @@
     <string name="s_ms_power_desc">Настройки поведения устройства в спящем режиме</string>
     <string name="s_ms_wake_lock">Блокировать сон</string>
     <string name="s_ms_wake_lock_desc">В этом режиме выключается экран, но CPU продолжает полноценно работать</string>
-    <string name="s_ms_wifi_lock">Не отключать Wi-Fi</string>
-    <string name="s_ms_wifi_lock_desc">Удерживать Wi-Fi во включеном состоянии пока устройство в спящем режиме</string>
+    <string name="s_ms_wifi_lock">Не отключать Wi&#8211;Fi</string>
+    <string name="s_ms_wifi_lock_desc">Удерживать Wi&#8211;Fi во включеном состоянии пока устройство в спящем режиме</string>
     <string name="s_ms_antispam">Антиспам</string>
     <string name="s_ms_antispam_desc">Настройки защиты от спама</string>
     <string name="s_antispam_enabled">Включить</string>
@@ -432,10 +430,10 @@
     <string name="s_country_34">Камбоджа</string>
     <string name="s_country_35">Камерун</string>
     <string name="s_country_36">Канада</string>
-    <string name="s_country_37">Кабо-Верде</string>
+    <string name="s_country_37">Кабо&#8211;Верде</string>
     <string name="s_country_38">Каймановы острова</string>
     <string name="s_country_39">ЦАР</string>
-    <string name="s_country_40">Шри-Ланка</string>
+    <string name="s_country_40">Шри&#8211;Ланка</string>
     <string name="s_country_41">Чад</string>
     <string name="s_country_42">Чили</string>
     <string name="s_country_43">Китай</string>
@@ -448,7 +446,7 @@
     <string name="s_country_50">Республика Конго</string>
     <string name="s_country_51">ДР Конго</string>
     <string name="s_country_52">Острова Кука</string>
-    <string name="s_country_53">Коста-Рика</string>
+    <string name="s_country_53">Коста&#8211;Рика</string>
     <string name="s_country_54">Хорватия</string>
     <string name="s_country_55">Куба</string>
     <string name="s_country_56">Кипр</string>
@@ -504,7 +502,7 @@
     <string name="s_country_106">Ирландия</string>
     <string name="s_country_107">Израиль</string>
     <string name="s_country_108">Италия</string>
-    <string name="s_country_109">Кот-д\'Ивуар</string>
+    <string name="s_country_109">Кот&#8211;д\'Ивуар</string>
     <string name="s_country_110">Ямайка</string>
     <string name="s_country_111">Япония</string>
     <string name="s_country_112">Казахстан</string>
@@ -564,36 +562,36 @@
     <string name="s_country_166">Палау</string>
     <string name="s_country_167">Пакистан</string>
     <string name="s_country_168">Панама</string>
-    <string name="s_country_169">Папуа - Новая Гвинея</string>
+    <string name="s_country_169">Папуа &#8211; Новая Гвинея</string>
     <string name="s_country_170">Парагвай</string>
     <string name="s_country_171">Перу</string>
     <string name="s_country_172">Филиппины</string>
     <string name="s_country_173">Острова Питкэрн</string>
     <string name="s_country_174">Польша</string>
     <string name="s_country_175">Португалия</string>
-    <string name="s_country_176">Гвинея-Бисау</string>
+    <string name="s_country_176">Гвинея&#8211;Бисау</string>
     <string name="s_country_177">Восточный Тимор</string>
-    <string name="s_country_178">Пуэрто-Рико</string>
+    <string name="s_country_178">Пуэрто&#8211;Рико</string>
     <string name="s_country_179">Катар</string>
     <string name="s_country_180">Реюньон</string>
     <string name="s_country_181">Румыния</string>
     <string name="s_country_182">Россия</string>
     <string name="s_country_183">Руанда</string>
-    <string name="s_country_184">Сен-Бартельми</string>
+    <string name="s_country_184">Сен&#8211;Бартельми</string>
     <string name="s_country_185">Остров Святой Елены</string>
-    <string name="s_country_186">Сент-Киттс и Невис</string>
+    <string name="s_country_186">Сент&#8211;Киттс и Невис</string>
     <string name="s_country_187">Ангилья</string>
-    <string name="s_country_188">Сент-Люсия</string>
-    <string name="s_country_189">Сен-Мартен (Франция)</string>
-    <string name="s_country_190">Сен-Пьер и Микелон</string>
-    <string name="s_country_191">Сент-Винсент и Гренадины</string>
-    <string name="s_country_192">Сан-Марино</string>
-    <string name="s_country_193">Сан-Томе и Принсипи</string>
+    <string name="s_country_188">Сент&#8211;Люсия</string>
+    <string name="s_country_189">Сен&#8211;Мартен (Франция)</string>
+    <string name="s_country_190">Сен&#8211;Пьер и Микелон</string>
+    <string name="s_country_191">Сент&#8211;Винсент и Гренадины</string>
+    <string name="s_country_192">Сан&#8211;Марино</string>
+    <string name="s_country_193">Сан&#8211;Томе и Принсипи</string>
     <string name="s_country_194">Саудовская Аравия</string>
     <string name="s_country_195">Сенегал</string>
     <string name="s_country_196">Сербия</string>
     <string name="s_country_197">Сейшельские Острова</string>
-    <string name="s_country_198">Сьерра-Леоне</string>
+    <string name="s_country_198">Сьерра&#8211;Леоне</string>
     <string name="s_country_199">Сингапур</string>
     <string name="s_country_200">Словакия</string>
     <string name="s_country_201">Вьетнам</string>
@@ -605,7 +603,7 @@
     <string name="s_country_207">Западная Сахара</string>
     <string name="s_country_208">Судан</string>
     <string name="s_country_209">Суринам</string>
-    <string name="s_country_210">Шпицберген и Ян-Майен</string>
+    <string name="s_country_210">Шпицберген и Ян&#8211;Майен</string>
     <string name="s_country_211">Свазиленд</string>
     <string name="s_country_212">Швеция</string>
     <string name="s_country_213">Швейцария</string>

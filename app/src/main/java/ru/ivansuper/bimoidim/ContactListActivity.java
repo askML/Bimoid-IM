@@ -286,24 +286,24 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 				adapter.setPadding(7);
 				final Resources res = getResources();
 				if(service.prefs.getBoolean("ms_sounds", true)){
-					adapter.put(res.getDrawable(R.drawable.toggle_sound_on), Locale.getString("s_sound_on"), 0);
+                    adapter.put(res.getDrawable(R.drawable.toggle_sound_on), res.getString(R.string.s_sound_on), 0);
 				}else{
-					adapter.put(res.getDrawable(R.drawable.toggle_sound_off), Locale.getString("s_sound_off"), 0);
+                    adapter.put(res.getDrawable(R.drawable.toggle_sound_off), res.getString(R.string.s_sound_off), 0);
 				}
 				if(service.prefs.getBoolean("ms_vibro", true)){
-					adapter.put(res.getDrawable(R.drawable.toggle_vibro_on), Locale.getString("s_vibro_on"), 1);
+                    adapter.put(res.getDrawable(R.drawable.toggle_vibro_on), res.getString(R.string.s_vibro_on), 1);
 				}else{
-					adapter.put(res.getDrawable(R.drawable.toggle_vibro_off), Locale.getString("s_vibro_off"), 1);
+                    adapter.put(res.getDrawable(R.drawable.toggle_vibro_off), res.getString(R.string.s_vibro_off), 1);
 				}
 				if(service.prefs.getBoolean("ms_offline", true)){
-					adapter.put(res.getDrawable(R.drawable.toggle_offline_on), Locale.getString("s_hide_offline_off"), 2);
+                    adapter.put(res.getDrawable(R.drawable.toggle_offline_on), res.getString(R.string.s_hide_offline_off), 2);
 				}else{
-					adapter.put(res.getDrawable(R.drawable.toggle_offline_off), Locale.getString("s_hide_offline_on"), 2);
+                    adapter.put(res.getDrawable(R.drawable.toggle_offline_off), res.getString(R.string.s_hide_offline_on), 2);
 				}
 				if(service.prefs.getBoolean("ms_groups", true)){
-					adapter.put(res.getDrawable(R.drawable.show_groups), Locale.getString("s_show_groups"), 3);
+                    adapter.put(res.getDrawable(R.drawable.show_groups), res.getString(R.string.s_show_groups), 3);
 				}else{
-					adapter.put(res.getDrawable(R.drawable.hide_groups), Locale.getString("s_hide_groups"), 3);
+                    adapter.put(res.getDrawable(R.drawable.hide_groups), res.getString(R.string.s_hide_groups), 3);
 				}
 				last_quick_action = PopupBuilder.buildList(adapter, v, null, 230*resources.dm.density, LayoutParams.WRAP_CONTENT, new OnItemClickListener(){
 					@Override
@@ -509,7 +509,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     		if(dialog_for_display == null) return null;
     		final String stack = dialog_for_display.field1;
         	dialog = DialogBuilder.createYesNo(ContactListActivity.this, Gravity.TOP,
-        			dialog_for_display.header, dialog_for_display.text+"\n----------\n"+stack, Locale.getString("s_close"), Locale.getString("s_do_copy"),
+        			dialog_for_display.header, dialog_for_display.text+"\n----------\n"+stack, getString(R.string.s_close), getString(R.string.s_do_copy),
         			 new OnClickListener(){
     					@Override
     					public void onClick(View v) {
@@ -522,15 +522,15 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     						removeDialog(type);
     						ClipboardManager cm = (ClipboardManager)getSystemService(Service.CLIPBOARD_SERVICE);
     						cm.setText(stack);
-    						Toast.makeText(ContactListActivity.this, Locale.getString("s_copied"), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ContactListActivity.this, R.string.s_copied, Toast.LENGTH_SHORT).show();
     					}
     				});
         	last_shown_notify_dialog = dialog;
     		break;
     	case -0x1://Crush
         	dialog = DialogBuilder.createOk(ContactListActivity.this,
-        			Locale.getString("s_information"), Locale.getString("s_force_close_info"),
-        			Locale.getString("s_close"), Gravity.TOP, new OnClickListener(){
+        			getString(R.string.s_information), getString(R.string.s_force_close_info),
+        			getString(R.string.s_close), Gravity.TOP, new OnClickListener(){
     					@Override
     					public void onClick(View v) {
     						removeDialog(type);
@@ -539,8 +539,8 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     		break;
     	case 0x0://About
         	dialog = DialogBuilder.createOk(ContactListActivity.this,
-        			Locale.getString("s_about_header"), utilities.match(Locale.getString("s_about_text"), new String[]{resources.VERSION}),
-        			Locale.getString("s_close"), Gravity.TOP, new OnClickListener(){
+        			getString(R.string.s_about_header), utilities.match(getString(R.string.s_about_text), new String[]{resources.VERSION}),
+        			getString(R.string.s_close), Gravity.TOP, new OnClickListener(){
     					@Override
     					public void onClick(View v) {
     						removeDialog(type);
@@ -550,9 +550,9 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     	case 0x1://No profiles notify
     		dialog = DialogBuilder.createYesNo(ContactListActivity.this,
     				Gravity.TOP,
-    				Locale.getString("s_accounts"),
-    				Locale.getString("s_no_accounts_notify"),
-            		Locale.getString("s_yes"), Locale.getString("s_no"),
+    				getString(R.string.s_accounts),
+    				getString(R.string.s_no_accounts_notify),
+            		getString(R.string.s_yes), getString(R.string.s_no),
             		new OnClickListener(){
     					@Override
     					public void onClick(View arg0) {
@@ -572,13 +572,13 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     	case 0x2://Main menu
         	UAdapter adapter = new UAdapter();
         	adapter.setPadding(10);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_contact_list"), 2);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_users_search"), 21);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_settings"), 3);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_about_header"), 0);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_exit"), 1);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_contact_list), 2);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_users_search), 21);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_settings), 3);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_about_header), 0);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_exit), 1);
         	dialog = DialogBuilder.create(ContactListActivity.this,
-        			Locale.getString("s_main_menu"),
+        			getString(R.string.s_main_menu),
         			adapter,
     				Gravity.CENTER,
     				new context_menu_listener());
@@ -588,7 +588,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
         	adapter.setPadding(10);
         	//adapter.put(resources.context_menu_icon, "По ID", 22);
         	//adapter.put(resources.context_menu_icon, "По E-Mail", 23);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_search_type_detail"), 24);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_search_type_detail), 24);
         	dialog = DialogBuilder.createWithNoHeader(ContactListActivity.this,
         			adapter,
     				Gravity.CENTER,
@@ -610,7 +610,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 							BimoidProfile profile = service.profiles.list.get(arg2);
 							if(profile == null) return;
 							if(!profile.connected){
-								service.showDialogInContactList(Locale.getString("s_information"), Locale.getString("s_profile_must_be_connected_notify"));
+								service.showDialogInContactList(getString(R.string.s_information), getString(R.string.s_profile_must_be_connected_notify));
 								return;
 							}
 							Intent activity = new Intent(ContactListActivity.this, DetailSearchActivity.class);
@@ -645,7 +645,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     		if(dialog_for_display.is_error){
     			dialog = DialogBuilder.createYesNo(ContactListActivity.this, 0,
     					dialog_for_display.header, dialog_for_display.text,
-    					Locale.getString("s_ok"), Locale.getString("s_do_copy"),
+    					getString(R.string.s_ok), getString(R.string.s_do_copy),
     					new OnClickListener(){
 							@Override
 							public void onClick(View v){
@@ -660,7 +660,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     					});
     		}else{
 	        	dialog = DialogBuilder.createOk(ContactListActivity.this,
-	        			dialog_for_display.header, dialog_for_display.text, Locale.getString("s_close"),
+	        			dialog_for_display.header, dialog_for_display.text, getString(R.string.s_close),
 	        			Gravity.TOP, new OnClickListener(){
 	    					@Override
 	    					public void onClick(View v) {
@@ -673,14 +673,14 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     	case 0x20://Note context
         	adapter = new UAdapter();
         	adapter.setPadding(5);
-            adapter.put(resources.context_menu_icon, Locale.getString("s_copy_note_name"), 3);
+            adapter.put(resources.context_menu_icon, getString(R.string.s_copy_note_name), 3);
             if(context_note.TEXT != null)
             	if(context_note.TEXT.length() > 0)
-            		adapter.put(resources.context_menu_icon, Locale.getString("s_copy_note_text"), 4);
+            		adapter.put(resources.context_menu_icon, getString(R.string.s_copy_note_text), 4);
 			if(context_note.getProfile().connected){
-	            adapter.put(resources.context_menu_icon, Locale.getString("s_do_change"), 2);
-	        	adapter.put(resources.context_menu_icon, Locale.getString("s_do_move"), 1);
-	            adapter.put(resources.context_menu_icon, Locale.getString("s_do_delete"), 0);
+	            adapter.put(resources.context_menu_icon, getString(R.string.s_do_change), 2);
+	        	adapter.put(resources.context_menu_icon, getString(R.string.s_do_move), 1);
+	            adapter.put(resources.context_menu_icon, getString(R.string.s_do_delete), 0);
 			}
         	dialog = DialogBuilder.createWithNoHeader(ContactListActivity.this,
         			adapter,
@@ -707,12 +707,12 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 							case 3:
 								ClipboardManager cm = (ClipboardManager)getSystemService(Service.CLIPBOARD_SERVICE);
 								cm.setText(context_note.name);
-								Toast.makeText(ContactListActivity.this, Locale.getString("s_copied"), Toast.LENGTH_SHORT).show();
+								Toast.makeText(ContactListActivity.this, getString(R.string.s_copied), Toast.LENGTH_SHORT).show();
 								break;
 							case 4:
 								cm = (ClipboardManager)getSystemService(Service.CLIPBOARD_SERVICE);
 								cm.setText(context_note.TEXT);
-								Toast.makeText(ContactListActivity.this, Locale.getString("s_copied"), Toast.LENGTH_SHORT).show();								break;
+								Toast.makeText(ContactListActivity.this, getString(R.string.s_copied), Toast.LENGTH_SHORT).show();								break;
 							}
 						}
         	});
@@ -721,54 +721,54 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
         	adapter = new UAdapter();
         	adapter.setPadding(5);
         	if(context_contact.isTemporary())
-            	adapter.put(resources.context_menu_icon, Locale.getString("s_add_to_contact_list"), 25);
-        	
+            	adapter.put(resources.context_menu_icon, getString(R.string.s_add_to_contact_list), 25);
+
         	if(context_contact.itIsTransport()){
         		if(context_contact.profile.getTransportByID(context_contact.getTransportId()).params.update_contacts)
-	        		adapter.put(resources.context_menu_icon, Locale.getString("s_do_rename"), 4);
+	        		adapter.put(resources.context_menu_icon, getString(R.string.s_do_rename), 4);
         	}else{
 	        	if(!context_contact.isTemporary())
 	        	if(context_contact.getPrivacy() != Contact.CL_PRIV_TYPE_IGNORE_NOT_IN_LIST)
-	        		adapter.put(resources.context_menu_icon, Locale.getString("s_do_rename"), 4);
+	        		adapter.put(resources.context_menu_icon, getString(R.string.s_do_rename), 4);
         	}
         	if(context_contact.itIsTransport()){
         		if(context_contact.profile.getTransportByID(context_contact.getTransportId()).params.delete_contacts)
-                	adapter.put(resources.context_menu_icon, Locale.getString("s_do_delete"), 5);
+                	adapter.put(resources.context_menu_icon, getString(R.string.s_do_delete), 5);
         	}else{
-            	adapter.put(resources.context_menu_icon, Locale.getString("s_do_delete"), 5);
+            	adapter.put(resources.context_menu_icon, getString(R.string.s_do_delete), 5);
         	}
-        	
+
         	if(!context_contact.isTemporary())
         	if(context_contact.getPrivacy() != Contact.CL_PRIV_TYPE_IGNORE_NOT_IN_LIST)
-        		adapter.put(resources.context_menu_icon, Locale.getString("s_do_move"), 12);
-        	
+        		adapter.put(resources.context_menu_icon, getString(R.string.s_do_move), 12);
+
         	if(context_contact.itIsTransport()){
         		if(context_contact.profile.getTransportByID(context_contact.getTransportId()).params.auth_supported)
                 	if(context_contact.auth_flag)
-                		adapter.put(resources.context_menu_icon, Locale.getString("s_ask_suth"), 26);
+                		adapter.put(resources.context_menu_icon, getString(R.string.s_ask_suth), 26);
         	}else{
             	if(context_contact.auth_flag)
-            		adapter.put(resources.context_menu_icon, Locale.getString("s_ask_suth"), 26);
+            		adapter.put(resources.context_menu_icon, getString(R.string.s_ask_suth), 26);
         	}
-        	
+
         	if(context_contact.itIsTransport()){
         		if(context_contact.profile.getTransportByID(context_contact.getTransportId()).params.auth_revoke)
-            		adapter.put(resources.context_menu_icon, Locale.getString("s_revoke_auth"), 6);
+            		adapter.put(resources.context_menu_icon, getString(R.string.s_revoke_auth), 6);
         	}else{
             	if(!context_contact.isTemporary())
                 	if(context_contact.getPrivacy() != Contact.CL_PRIV_TYPE_IGNORE_NOT_IN_LIST)
-                		adapter.put(resources.context_menu_icon, Locale.getString("s_revoke_auth"), 6);
+                		adapter.put(resources.context_menu_icon, getString(R.string.s_revoke_auth), 6);
         	}
-        	
+
         	if(!context_contact.isTemporary())
         	if(context_contact.getPrivacy() != Contact.CL_PRIV_TYPE_IGNORE_NOT_IN_LIST)
-        		adapter.put(resources.context_menu_icon, Locale.getString("s_visibility"), 7);
-        	
+        		adapter.put(resources.context_menu_icon, getString(R.string.s_visibility), 7);
+
         	if(context_contact.itIsTransport()){
         		if(context_contact.profile.getTransportByID(context_contact.getTransportId()).params.detail_req)
-            		adapter.put(resources.context_menu_icon, Locale.getString("s_contact_info"), 20);
+            		adapter.put(resources.context_menu_icon, getString(R.string.s_contact_info), 20);
         	}else{
-        		adapter.put(resources.context_menu_icon, Locale.getString("s_contact_info"), 20);
+        		adapter.put(resources.context_menu_icon, getString(R.string.s_contact_info), 20);
         	}
         	dialog = DialogBuilder.createWithNoHeader(ContactListActivity.this,
         			adapter,
@@ -782,28 +782,28 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
         	case Contact.CL_PRIV_TYPE_NONE:
             	if(context_contact.itIsTransport()){
             		if(context_contact.profile.getTransportByID(context_contact.getTransportId()).params.visible_list)
-    	            	adapter.put(resources.context_menu_icon, Locale.getString("s_add_to_vis"), 13);
+    	            	adapter.put(resources.context_menu_icon, getString(R.string.s_add_to_vis), 13);
             		if(context_contact.profile.getTransportByID(context_contact.getTransportId()).params.invisible_list)
-    	            	adapter.put(resources.context_menu_icon, Locale.getString("s_add_to_invis"), 14);
+    	            	adapter.put(resources.context_menu_icon, getString(R.string.s_add_to_invis), 14);
             		if(context_contact.profile.getTransportByID(context_contact.getTransportId()).params.ignore_list)
-    	            	adapter.put(resources.context_menu_icon, Locale.getString("s_add_to_ignore"), 15);
+    	            	adapter.put(resources.context_menu_icon, getString(R.string.s_add_to_ignore), 15);
             		if(context_contact.profile.getTransportByID(context_contact.getTransportId()).params.move_to_ignore)
-    	            	adapter.put(resources.context_menu_icon, Locale.getString("s_move_to_ignore"), 16);
+    	            	adapter.put(resources.context_menu_icon, getString(R.string.s_move_to_ignore), 16);
             	}else{
-	            	adapter.put(resources.context_menu_icon, Locale.getString("s_add_to_vis"), 13);
-	            	adapter.put(resources.context_menu_icon, Locale.getString("s_add_to_invis"), 14);
-	            	adapter.put(resources.context_menu_icon, Locale.getString("s_add_to_ignore"), 15);
-	            	adapter.put(resources.context_menu_icon, Locale.getString("s_move_to_ignore"), 16);
+	            	adapter.put(resources.context_menu_icon, getString(R.string.s_add_to_vis), 13);
+	            	adapter.put(resources.context_menu_icon, getString(R.string.s_add_to_invis), 14);
+	            	adapter.put(resources.context_menu_icon, getString(R.string.s_add_to_ignore), 15);
+	            	adapter.put(resources.context_menu_icon, getString(R.string.s_move_to_ignore), 16);
             	}
         		break;
         	case Contact.CL_PRIV_TYPE_VISIBLE_LIST:
-            	adapter.put(resources.context_menu_icon, Locale.getString("s_del_from_vis"), 17);
+            	adapter.put(resources.context_menu_icon, getString(R.string.s_del_from_vis), 17);
         		break;
         	case Contact.CL_PRIV_TYPE_INVISIBLE_LIST:
-            	adapter.put(resources.context_menu_icon, Locale.getString("s_del_from_invis"), 18);
+            	adapter.put(resources.context_menu_icon, getString(R.string.s_del_from_invis), 18);
         		break;
         	case Contact.CL_PRIV_TYPE_IGNORE_LIST:
-            	adapter.put(resources.context_menu_icon, Locale.getString("s_del_from_ignore"), 19);
+            	adapter.put(resources.context_menu_icon, getString(R.string.s_del_from_ignore), 19);
         		break;
         	}
         	dialog = DialogBuilder.createWithNoHeader(ContactListActivity.this,
@@ -826,7 +826,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 				list = context_note.getProfile().getGroups();
 				break;
 			}
-			adapter_.put("["+Locale.getString("s_without_group")+"]", 0);
+			adapter_.put("["+getString(R.string.s_without_group)+"]", 0);
     		for(int i=0; i<list.size(); i++)
     			adapter_.put(list.get(i).getName(), list.get(i).getItemId());
         	dialog = DialogBuilder.createWithNoHeader(ContactListActivity.this,
@@ -839,25 +839,25 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 							switch(roster_operation_confirm_helper){
 							case RosterOperation.CONTACT_MODIFY:
 								if(context_contact.getGroupId() == (int)adapter_.getItemId(arg2)){
-									service.showDialogInContactList(Locale.getString("s_moving"), utilities.match(Locale.getString("s_contact_moving_error_1"), new String[]{context_contact.getName()}));
+									service.showDialogInContactList(getString(R.string.s_moving), utilities.match(getString(R.string.s_contact_moving_error_1), new String[]{context_contact.getName()}));
 									return;
 								}
 								context_contact.getProfile().moveContact(context_contact.getItemId(), (int)adapter_.getItemId(arg2));
 								break;
 							case RosterOperation.GROUP_MODIFY:
 								if(context_group.getGroupId() == (int)adapter_.getItemId(arg2)){
-									service.showDialogInContactList(Locale.getString("s_moving"), utilities.match(Locale.getString("s_group_moving_error_1"), new String[]{context_group.getName()}));
+									service.showDialogInContactList(getString(R.string.s_moving), utilities.match(getString(R.string.s_group_moving_error_1), new String[]{context_group.getName()}));
 									return;
 								}
 								if(context_group.getItemId() == (int)adapter_.getItemId(arg2)){
-									service.showDialogInContactList(Locale.getString("s_moving"), Locale.getString("s_group_moving_error_2"));
+									service.showDialogInContactList(getString(R.string.s_moving), getString(R.string.s_group_moving_error_2));
 									return;
 								}
 								context_group.getProfile().moveGroup(context_group.getItemId(), (int)adapter_.getItemId(arg2));
 								break;
 							case RosterOperation.NOTE_MODIFY:
 								if(context_note.getGroupId() == (int)adapter_.getItemId(arg2)){
-									service.showDialogInContactList(Locale.getString("s_moving"), utilities.match(Locale.getString("s_contact_moving_error_1"), new String[]{context_note.getName()}));
+									service.showDialogInContactList(getString(R.string.s_moving), utilities.match(getString(R.string.s_contact_moving_error_1), new String[]{context_note.getName()}));
 									return;
 								}
 								context_note.getProfile().moveNote(context_note.getItemId(), (int)adapter_.getItemId(arg2));
@@ -870,9 +870,9 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     	case 0x6://Group context
         	adapter = new UAdapter();
         	adapter.setPadding(5);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_do_rename"), 8);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_do_delete"), 9);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_do_move"), 12);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_do_rename), 8);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_do_delete), 9);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_do_move), 12);
         	dialog = DialogBuilder.createWithNoHeader(ContactListActivity.this,
         			adapter,
     				Gravity.CENTER,
@@ -882,20 +882,20 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     		String text = "";
     		switch(roster_operation_confirm_helper){
     		case RosterOperation.CONTACT_REMOVE:
-    			text = utilities.match(Locale.getString("s_delete_contact_confirm"), new String[]{context_contact.getName()});
+    			text = utilities.match(getString(R.string.s_delete_contact_confirm), new String[]{context_contact.getName()});
     			break;
     		case RosterOperation.GROUP_REMOVE:
-    			text = utilities.match(Locale.getString("s_delete_group_confirm"), new String[]{context_group.getName()});
+    			text = utilities.match(getString(R.string.s_delete_group_confirm), new String[]{context_group.getName()});
     			break;
     		case RosterOperation.NOTE_REMOVE:
-    			text = utilities.match(Locale.getString("s_delete_note_confirm"), new String[]{context_note.getName()});
+    			text = utilities.match(getString(R.string.s_delete_note_confirm), new String[]{context_note.getName()});
     			break;
     		}
     		dialog = DialogBuilder.createYesNo(ContactListActivity.this,
     				Gravity.TOP,
-    				Locale.getString("s_operation_confirming"),
+    				getString(R.string.s_operation_confirming),
     				text,
-            		Locale.getString("s_yes"), Locale.getString("s_no"),
+            		getString(R.string.s_yes), getString(R.string.s_no),
             		new OnClickListener(){
     					@Override
     					public void onClick(View arg0) {
@@ -944,8 +944,8 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     		dialog = DialogBuilder.createYesNo(ContactListActivity.this,
     				lay,
     				Gravity.TOP,
-    				Locale.getString("s_renaming"),
-            		Locale.getString("s_ok"), Locale.getString("s_cancel"),
+    				getString(R.string.s_renaming),
+            		getString(R.string.s_ok), getString(R.string.s_cancel),
             		new OnClickListener(){
     					@Override
     					public void onClick(View arg0) {
@@ -972,13 +972,13 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     	case 0x8://Contact-list menu
         	adapter = new UAdapter();
         	adapter.setPadding(10);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_add_contact"), 10);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_add_group"), 11);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_add_transport"), 28);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_add_note"), 29);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_moved_to_ignore"), 27);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_add_contact), 10);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_add_group), 11);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_add_transport), 28);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_add_note), 29);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_moved_to_ignore), 27);
         	dialog = DialogBuilder.create(ContactListActivity.this,
-        			Locale.getString("s_contact_list"),
+        			getString(R.string.s_contact_list),
         			adapter,
     				Gravity.CENTER,
     				new context_menu_listener());
@@ -1022,17 +1022,17 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     		final UAdapter adapter_b = new UAdapter();
     		groups.setAdapter(adapter_b);
 
-    		
+
 			adapter_a.setSelected(0);
 			BimoidProfile profile = service.profiles.list.get(0);
 			Vector<Group> list2 = profile.getGroups();
 			adapter_b.clear();
-			adapter_b.put("["+Locale.getString("s_without_group")+"]", 0);
+			adapter_b.put("["+getString(R.string.s_without_group)+"]", 0);
     		for(int i=0; i<list2.size(); i++)
     			adapter_b.put(list2.get(i).getName(), list2.get(i).getItemId());
 
 			adapter_b.setSelected(0);
-    		
+
     		profiles.setOnItemClickListener(new OnItemClickListener(){
 				@Override
 				public void onItemClick(AdapterView<?> arg0, View arg1,
@@ -1041,7 +1041,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 					BimoidProfile profile = service.profiles.list.get(arg2);
 					Vector<Group> list = profile.getGroups();
 					adapter_b.clear();
-	    			adapter_b.put("["+Locale.getString("s_without_group")+"]", 0);
+	    			adapter_b.put("["+getString(R.string.s_without_group)+"]", 0);
 		    		for(int i=0; i<list.size(); i++)
 		    			adapter_b.put(list.get(i).getName(), list.get(i).getItemId());
 					adapter_b.setSelected(0);
@@ -1059,8 +1059,8 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     		dialog = DialogBuilder.createYesNo(ContactListActivity.this,
     				lay,
     				Gravity.TOP,
-    				Locale.getString("s_add_contact"),
-            		Locale.getString("s_do_add"), Locale.getString("s_cancel"),
+    				getString(R.string.s_add_contact),
+            		getString(R.string.s_do_add), getString(R.string.s_cancel),
             		new OnClickListener(){
     					@Override
     					public void onClick(View arg0) {
@@ -1103,10 +1103,10 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
         		l3.setTextColor(ColorScheme.getColor(12));
         		l4.setTextColor(ColorScheme.getColor(12));
     		}
-    		l1.setText(Locale.getString("s_select_profile"));
-    		l4.setText(Locale.getString("s_select_group"));
-    		l2.setText(Locale.getString("s_note_name"));
-    		l3.setText(Locale.getString("s_note_text"));
+    		l1.setText(getString(R.string.s_select_profile));
+    		l4.setText(getString(R.string.s_select_group));
+    		l2.setText(getString(R.string.s_note_name));
+    		l3.setText(getString(R.string.s_note_text));
     		final LinearLayout type_lay = (LinearLayout)lay.findViewById(R.id.add_note_type_dialog_type_list_layout);
     		type_lay.setOnTouchListener(new OnTouchListener(){
 				@Override
@@ -1124,11 +1124,11 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     		final UAdapter type_adapter = new UAdapter();
     		type_adapter.setPadding(5);
     		type_adapter.setTextColor(ColorScheme.getColor(12));
-    		type_adapter.put(getResources().getDrawable(R.drawable.note), Locale.getString("s_note_type_text"), NoteItem.CL_NOTE_TYPE_TEXT);
-    		type_adapter.put(getResources().getDrawable(R.drawable.note_prog), Locale.getString("s_note_type_file"), NoteItem.CL_NOTE_TYPE_COMMAND);
-    		type_adapter.put(getResources().getDrawable(R.drawable.note_web), Locale.getString("s_note_type_link"), NoteItem.CL_NOTE_TYPE_LINK);
-    		type_adapter.put(getResources().getDrawable(R.drawable.note_mail), Locale.getString("s_note_type_mail"), NoteItem.CL_NOTE_TYPE_EMAIL);
-    		type_adapter.put(getResources().getDrawable(R.drawable.note_phone), Locale.getString("s_note_type_phone"), NoteItem.CL_NOTE_TYPE_PHONE);
+    		type_adapter.put(getResources().getDrawable(R.drawable.note), getString(R.string.s_note_type_text), NoteItem.CL_NOTE_TYPE_TEXT);
+    		type_adapter.put(getResources().getDrawable(R.drawable.note_prog), getString(R.string.s_note_type_file), NoteItem.CL_NOTE_TYPE_COMMAND);
+    		type_adapter.put(getResources().getDrawable(R.drawable.note_web), getString(R.string.s_note_type_link), NoteItem.CL_NOTE_TYPE_LINK);
+    		type_adapter.put(getResources().getDrawable(R.drawable.note_mail), getString(R.string.s_note_type_mail), NoteItem.CL_NOTE_TYPE_EMAIL);
+    		type_adapter.put(getResources().getDrawable(R.drawable.note_phone), getString(R.string.s_note_type_phone), NoteItem.CL_NOTE_TYPE_PHONE);
     		type_list.setAdapter(type_adapter);
     		final Button note_type = (Button)lay.findViewById(R.id.add_note_dialog_type_btn);
     		final Button select_file = (Button)lay.findViewById(R.id.add_note_dialog_select_file_btn);
@@ -1147,29 +1147,29 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 					selected_type.VALUE = (int)arg0.getAdapter().getItemId(arg2);
 					switch(selected_type.VALUE){
 					case NoteItem.CL_NOTE_TYPE_TEXT:
-			    		l2.setText(Locale.getString("s_note_name"));
-			    		l3.setText(Locale.getString("s_note_text"));
+			    		l2.setText(getString(R.string.s_note_name));
+			    		l3.setText(getString(R.string.s_note_text));
 						note_type.setCompoundDrawables(utilities.setDrawableBounds(getResources().getDrawable(R.drawable.note)), null, null, null);
 						break;
 					case NoteItem.CL_NOTE_TYPE_COMMAND:
-			    		l2.setText(Locale.getString("s_prog_note_name"));
-			    		l3.setText(Locale.getString("s_prog_note_text"));
+			    		l2.setText(getString(R.string.s_prog_note_name));
+			    		l3.setText(getString(R.string.s_prog_note_text));
 						note_type.setCompoundDrawables(utilities.setDrawableBounds(getResources().getDrawable(R.drawable.note_prog)), null, null, null);
 			    		select_file.setVisibility(View.VISIBLE);
 						break;
 					case NoteItem.CL_NOTE_TYPE_LINK:
-			    		l2.setText(Locale.getString("s_link_note_name"));
-			    		l3.setText(Locale.getString("s_link_note_text"));
+			    		l2.setText(getString(R.string.s_link_note_name));
+			    		l3.setText(getString(R.string.s_link_note_text));
 						note_type.setCompoundDrawables(utilities.setDrawableBounds(getResources().getDrawable(R.drawable.note_web)), null, null, null);
 						break;
 					case NoteItem.CL_NOTE_TYPE_EMAIL:
-			    		l2.setText(Locale.getString("s_mail_note_name"));
-			    		l3.setText(Locale.getString("s_mail_note_text"));
+			    		l2.setText(getString(R.string.s_mail_note_name));
+			    		l3.setText(getString(R.string.s_mail_note_text));
 						note_type.setCompoundDrawables(utilities.setDrawableBounds(getResources().getDrawable(R.drawable.note_mail)), null, null, null);
 						break;
 					case NoteItem.CL_NOTE_TYPE_PHONE:
-			    		l2.setText(Locale.getString("s_phone_note_name"));
-			    		l3.setText(Locale.getString("s_phone_note_text"));
+			    		l2.setText(getString(R.string.s_phone_note_name));
+			    		l3.setText(getString(R.string.s_phone_note_text));
 						note_type.setCompoundDrawables(utilities.setDrawableBounds(getResources().getDrawable(R.drawable.note_phone)), null, null, null);
 						break;
 					}
@@ -1179,29 +1179,29 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
         		selected_type.VALUE = context_note.TYPE;
 				switch(context_note.TYPE){
 				case NoteItem.CL_NOTE_TYPE_TEXT:
-		    		l2.setText(Locale.getString("s_note_name"));
-		    		l3.setText(Locale.getString("s_note_text"));
+		    		l2.setText(getString(R.string.s_note_name));
+		    		l3.setText(getString(R.string.s_note_text));
 					note_type.setCompoundDrawables(utilities.setDrawableBounds(getResources().getDrawable(R.drawable.note)), null, null, null);
 					break;
 				case NoteItem.CL_NOTE_TYPE_COMMAND:
-		    		l2.setText(Locale.getString("s_prog_note_name"));
-		    		l3.setText(Locale.getString("s_prog_note_text"));
+		    		l2.setText(getString(R.string.s_prog_note_name));
+		    		l3.setText(getString(R.string.s_prog_note_text));
 					note_type.setCompoundDrawables(utilities.setDrawableBounds(getResources().getDrawable(R.drawable.note_prog)), null, null, null);
 		    		select_file.setVisibility(View.VISIBLE);
 					break;
 				case NoteItem.CL_NOTE_TYPE_LINK:
-		    		l2.setText(Locale.getString("s_link_note_name"));
-		    		l3.setText(Locale.getString("s_link_note_text"));
+		    		l2.setText(getString(R.string.s_link_note_name));
+		    		l3.setText(getString(R.string.s_link_note_text));
 					note_type.setCompoundDrawables(utilities.setDrawableBounds(getResources().getDrawable(R.drawable.note_web)), null, null, null);
 					break;
 				case NoteItem.CL_NOTE_TYPE_EMAIL:
-		    		l2.setText(Locale.getString("s_mail_note_name"));
-		    		l3.setText(Locale.getString("s_mail_note_text"));
+		    		l2.setText(getString(R.string.s_mail_note_name));
+		    		l3.setText(getString(R.string.s_mail_note_text));
 					note_type.setCompoundDrawables(utilities.setDrawableBounds(getResources().getDrawable(R.drawable.note_mail)), null, null, null);
 					break;
 				case NoteItem.CL_NOTE_TYPE_PHONE:
-		    		l2.setText(Locale.getString("s_phone_note_name"));
-		    		l3.setText(Locale.getString("s_phone_note_text"));
+		    		l2.setText(getString(R.string.s_phone_note_name));
+		    		l3.setText(getString(R.string.s_phone_note_text));
 					note_type.setCompoundDrawables(utilities.setDrawableBounds(getResources().getDrawable(R.drawable.note_phone)), null, null, null);
 					break;
 				}
@@ -1252,7 +1252,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     		Interface.attachSelector(groups1);
     		final UAdapter adapter_b1 = new UAdapter();
     		groups1.setAdapter(adapter_b1);
-    		
+
 			for(int i=0; i<service.profiles.list.size(); i++)
 				adapter_a1.put(service.profiles.list.get(i).nickname, i);
 
@@ -1260,7 +1260,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 			profile = modify? context_note.profile: service.profiles.list.get(0);
 			list2 = profile.getGroups();
 			adapter_b1.clear();
-			adapter_b1.put("["+Locale.getString("s_without_group")+"]", 0);
+			adapter_b1.put("["+getString(R.string.s_without_group)+"]", 0);
 			int selected = 0;
     		for(int i=0; i<list2.size(); i++){
     			final int id = list2.get(i).getItemId();
@@ -1271,7 +1271,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     		}
     		//Log.e("Selected", ""+selected);
 			adapter_b1.setSelected(selected);
-    		
+
     		profiles2.setOnItemClickListener(new OnItemClickListener(){
 				@Override
 				public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
@@ -1279,7 +1279,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 					BimoidProfile profile = service.profiles.list.get(arg2);
 					Vector<Group> list = profile.getGroups();
 					adapter_b1.clear();
-	    			adapter_b1.put("["+Locale.getString("s_without_group")+"]", 0);
+	    			adapter_b1.put("["+getString(R.string.s_without_group)+"]", 0);
 		    		for(int i=0; i<list.size(); i++)
 		    			adapter_b1.put(list.get(i).getName(), list.get(i).getItemId());
 					adapter_b1.setSelected(0);
@@ -1294,8 +1294,8 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     		dialog = DialogBuilder.createYesNo(ContactListActivity.this,
     				lay,
     				Gravity.TOP,
-    				(modify? Locale.getString("s_modify_note"): Locale.getString("s_add_note")),
-            		modify? Locale.getString("s_do_change"): Locale.getString("s_do_add"), Locale.getString("s_cancel"),
+    				(modify? getString(R.string.s_modify_note): getString(R.string.s_add_note)),
+            		modify? getString(R.string.s_do_change): getString(R.string.s_do_add), getString(R.string.s_cancel),
             		new OnClickListener(){
     					@Override
     					public void onClick(View arg0) {
@@ -1311,7 +1311,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     						int parent_id = (int)adapter_b1.getItemId(adapter_b1.getSelectedIdx());
     						if(profile == null) return;
     						if(profile.noteNameExist(name_)){
-    							Toast t = Toast.makeText(ContactListActivity.this, Locale.getString("s_note_elready_exist"), Toast.LENGTH_LONG);
+    							Toast t = Toast.makeText(ContactListActivity.this, getString(R.string.s_note_elready_exist), Toast.LENGTH_LONG);
     							t.setGravity(Gravity.TOP, 0, 0);
     							t.show();
     							return;
@@ -1336,9 +1336,9 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     		lay = (LinearLayout)View.inflate(this, R.layout.add_transport_dialog, null);
     		if(ColorScheme.initialized){
     			utilities.setLabel(((TextView)lay.findViewById(R.id.l1)), "s_select_profile").setTextColor(ColorScheme.getColor(12));
-    			utilities.setLabel(((TextView)lay.findViewById(R.id.l2)), "s_login").setTextColor(ColorScheme.getColor(12)); 
-    			utilities.setLabel(((TextView)lay.findViewById(R.id.l3)), "s_password").setTextColor(ColorScheme.getColor(12)); 
-    			utilities.setLabel(((TextView)lay.findViewById(R.id.l4)), "s_transport").setTextColor(ColorScheme.getColor(12)); 
+    			utilities.setLabel(((TextView)lay.findViewById(R.id.l2)), "s_login").setTextColor(ColorScheme.getColor(12));
+    			utilities.setLabel(((TextView)lay.findViewById(R.id.l3)), "s_password").setTextColor(ColorScheme.getColor(12));
+    			utilities.setLabel(((TextView)lay.findViewById(R.id.l4)), "s_transport").setTextColor(ColorScheme.getColor(12));
     		}
      		final ListView profiles1 = (ListView)lay.findViewById(R.id.add_transport_dialog_profiles);
      		final ListView transports = (ListView)lay.findViewById(R.id.add_transport_transports);
@@ -1352,7 +1352,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     			p_adapter.put(service.profiles.list.get(i).nickname, i);
     		profiles1.setAdapter(p_adapter);
         	p_adapter.setSelected(0);
-        	
+
     		final UAdapter t_adapter = new UAdapter();
 			profile = service.profiles.list.get(0);
 			Vector<TransportParams> t = profile.transport_params;
@@ -1378,14 +1378,14 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 		    		}
 				}
     		});
-			
+
     		final EditText login = (EditText)lay.findViewById(R.id.add_transport_dialog_account);
     		if(ColorScheme.initialized) login.setTextColor(ColorScheme.getColor(13));
         	Interface.attachEditTextStyle(login);
     		final EditText pass = (EditText)lay.findViewById(R.id.add_transport_dialog_pass);
     		if(ColorScheme.initialized) pass.setTextColor(ColorScheme.getColor(13));
         	Interface.attachEditTextStyle(pass);
-    		
+
         	transports.setOnItemClickListener(new OnItemClickListener(){
 				@Override
 				public void onItemClick(AdapterView<?> arg0, View arg1,
@@ -1397,8 +1397,8 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 			dialog = DialogBuilder.createYesNo(ContactListActivity.this,
     				lay,
     				Gravity.TOP,
-    				Locale.getString("s_add_transport"),
-            		Locale.getString("s_do_add"), Locale.getString("s_cancel"),
+    				getString(R.string.s_add_transport),
+            		getString(R.string.s_do_add), getString(R.string.s_cancel),
             		new OnClickListener(){
     					@Override
     					public void onClick(View arg0) {
@@ -1411,7 +1411,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     						BimoidProfile profile = service.profiles.list.get(p_adapter.getSelectedIdx());
     						if(profile == null) return;
     						if(profile.countTransports() > profile.max_transports){
-    							service.showToast(utilities.match(Locale.getString("s_add_transport_limit_notify"), new String[]{String.valueOf(profile.max_transports)}), Toast.LENGTH_LONG);
+    							service.showToast(utilities.match(getString(R.string.s_add_transport_limit_notify), new String[]{String.valueOf(profile.max_transports)}), Toast.LENGTH_LONG);
     							return;
     						}
     						TransportParams params = profile.transport_params.get(t_adapter.getSelectedIdx());
@@ -1449,17 +1449,17 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     		Interface.attachSelector(tgroups);
     		final UAdapter tg_adapter = new UAdapter();
     		tgroups.setAdapter(tg_adapter);
-    		
+
     		if(adding_temporary) taccount.setText(context_contact.getID());
-    		
+
 			Vector<Group> tlist = tprofile.getGroups();
 			tg_adapter.clear();
-			tg_adapter.put("["+Locale.getString("s_without_group")+"]", 0);
+			tg_adapter.put("["+getString(R.string.s_without_group)+"]", 0);
     		for(int i=0; i<tlist.size(); i++)
     			tg_adapter.put(tlist.get(i).getName(), tlist.get(i).getItemId());
 
     		tg_adapter.setSelected(0);
-    		
+
     		tgroups.setOnItemClickListener(new OnItemClickListener(){
 				@Override
 				public void onItemClick(AdapterView<?> arg0, View arg1,
@@ -1471,8 +1471,8 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     		dialog = DialogBuilder.createYesNo(ContactListActivity.this,
     				lay,
     				Gravity.TOP,
-    				Locale.getString("s_add_contact"),
-            		Locale.getString("s_do_add"), Locale.getString("s_cancel"),
+    				getString(R.string.s_add_contact),
+            		getString(R.string.s_do_add), getString(R.string.s_cancel),
             		new OnClickListener(){
     					@Override
     					public void onClick(View arg0) {
@@ -1525,7 +1525,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 			BimoidProfile profile1 = service.profiles.list.get(0);
 			Vector<Group> list1 = profile1.getGroups();
 			adapter_b_.clear();
-			adapter_b_.put("["+Locale.getString("s_without_group")+"]", 0);
+			adapter_b_.put("["+getString(R.string.s_without_group)+"]", 0);
     		for(int i=0; i<list1.size(); i++)
     			adapter_b_.put(list1.get(i).getName(), list1.get(i).getItemId());
 
@@ -1539,7 +1539,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 					BimoidProfile profile = service.profiles.list.get(arg2);
 					Vector<Group> list = profile.getGroups();
 					adapter_b_.clear();
-					adapter_b_.put("["+Locale.getString("s_without_group")+"]", 0);
+					adapter_b_.put("["+getString(R.string.s_without_group)+"]", 0);
 		    		for(int i=0; i<list.size(); i++)
 		    			adapter_b_.put(list.get(i).getName(), list.get(i).getItemId());
 					adapter_b_.setSelected(0);
@@ -1555,8 +1555,8 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     		dialog = DialogBuilder.createYesNo(ContactListActivity.this,
     				lay,
     				Gravity.TOP,
-    				Locale.getString("s_add_group"),
-            		Locale.getString("s_do_add"), Locale.getString("s_cancel"),
+    				getString(R.string.s_add_group),
+            		getString(R.string.s_do_add), getString(R.string.s_cancel),
             		new OnClickListener(){
     					@Override
     					public void onClick(View arg0) {
@@ -1587,8 +1587,8 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     		dialog = DialogBuilder.createYesNo(ContactListActivity.this,
     				lay,
     				Gravity.TOP,
-    				Locale.getString("s_revoke_auth"),
-            		Locale.getString("s_do_revoke"), "Отмена",
+    				getString(R.string.s_revoke_auth),
+            		getString(R.string.s_do_revoke), "Отмена",
             		new OnClickListener(){
     					@Override
     					public void onClick(View arg0) {
@@ -1629,7 +1629,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     			utilities.setLabel(((TextView)lay.findViewById(R.id.l16)), "s_vcard_dept").setTextColor(ColorScheme.getColor(12));
     			utilities.setLabel(((TextView)lay.findViewById(R.id.l17)), "s_vcard_position").setTextColor(ColorScheme.getColor(12));
     		}
-    		
+
     		TextView nick_name = (TextView)lay.findViewById(R.id.info_dialog_nickname);
     		if(ColorScheme.initialized) nick_name.setTextColor(ColorScheme.getColor(12));
     		 nick_name.setText(utilities.filter(account_info_for_display.nick_name));
@@ -1661,10 +1661,10 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     		TextView gender_birthday = (TextView)lay.findViewById(R.id.info_dialog_gender_birthday);
     		if(ColorScheme.initialized) gender_birthday.setTextColor(ColorScheme.getColor(12));
     		if(account_info_for_display.birthday != 0){
-    		 gender_birthday.setText(Locale.getString("s_birthday")+": "+utilities.formatBirthdayTimestamp(account_info_for_display.birthday)+
-    				 "\n"+Locale.getString("s_gender")+": "+account_info_for_display.gender);
+    		 gender_birthday.setText(getString(R.string.s_birthday)+": "+utilities.formatBirthdayTimestamp(account_info_for_display.birthday)+
+    				 "\n"+getString(R.string.s_gender)+": "+account_info_for_display.gender);
     		}else{
-       		 gender_birthday.setText(Locale.getString("s_birthday")+": - \n"+Locale.getString("s_gender")+": "+account_info_for_display.gender);
+       		 gender_birthday.setText(getString(R.string.s_birthday)+": - \n"+getString(R.string.s_gender)+": "+account_info_for_display.gender);
     		}
     		TextView homepage = (TextView)lay.findViewById(R.id.info_dialog_homepage);
     		if(ColorScheme.initialized) homepage.setTextColor(ColorScheme.getColor(12));
@@ -1681,10 +1681,10 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     		 lastname.setText(utilities.filter(account_info_for_display.last_name));
     		TextView phones = (TextView)lay.findViewById(R.id.info_dialog_phones);
     		if(ColorScheme.initialized) phones.setTextColor(ColorScheme.getColor(12));
-    		 phones.setText(Locale.getString("s_home_phone")+": "+utilities.filter(account_info_for_display.home_phone)+"\n"+
-    				 Locale.getString("s_work_phone")+": "+utilities.filter(account_info_for_display.work_phone)+"\n"+
-    				 Locale.getString("s_cellular_phone")+": "+utilities.filter(account_info_for_display.cellular_phone)+"\n"+
-    				 Locale.getString("s_fax")+": "+utilities.filter(account_info_for_display.fax_number));
+    		 phones.setText(getString(R.string.s_home_phone)+": "+utilities.filter(account_info_for_display.home_phone)+"\n"+
+    				 getString(R.string.s_work_phone)+": "+utilities.filter(account_info_for_display.work_phone)+"\n"+
+    				 getString(R.string.s_cellular_phone)+": "+utilities.filter(account_info_for_display.cellular_phone)+"\n"+
+    				 getString(R.string.s_fax)+": "+utilities.filter(account_info_for_display.fax_number));
     		TextView position = (TextView)lay.findViewById(R.id.info_dialog_position);
     		if(ColorScheme.initialized) position.setTextColor(ColorScheme.getColor(12));
     		 position.setText(utilities.filter(account_info_for_display.position));
@@ -1694,30 +1694,30 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     		TextView zipcode = (TextView)lay.findViewById(R.id.info_dialog_zipcode);
     		if(ColorScheme.initialized) zipcode.setTextColor(ColorScheme.getColor(12));
     		 zipcode.setText(utilities.filter(account_info_for_display.zipcode));
-    		 information+=Locale.getString("s_nick")+": "+nick_name.getText()+"\n";
-    		 information+=Locale.getString("s_name")+": "+first_name.getText()+"\n";
-    		 information+=Locale.getString("s_surname")+": "+lastname.getText()+"\n";
-    		 information+=Locale.getString("s_country")+": "+country.getText()+"\n";
-    		 information+=Locale.getString("s_region")+": "+region.getText()+"\n";
-    		 information+=Locale.getString("s_city")+": "+city.getText()+"\n";
-    		 information+=Locale.getString("s_zipcode")+": "+zipcode.getText()+"\n";
-    		 information+=Locale.getString("s_address")+": "+address.getText()+"\n";
-    		 information+=Locale.getString("s_languages")+":\n"+languages.getText()+"\n";
-    		 information+=Locale.getString("s_gender")+"/"+Locale.getString("s_birthday")+":\n"+gender_birthday.getText()+"\n";
-    		 information+=Locale.getString("s_homepage")+": "+homepage.getText()+"\n";
-    		 information+=Locale.getString("s_about_user")+": "+about.getText()+"\n";
-    		 information+=Locale.getString("s_interests")+": "+interests.getText()+"\n";
-    		 information+=Locale.getString("s_email")+":\n"+emails.getText()+"\n";
-    		 information+=Locale.getString("s_phones")+":\n"+phones.getText()+"\n";
-    		 information+=Locale.getString("s_company")+": "+company.getText()+"\n";
-    		 information+=Locale.getString("s_dept")+": "+dept.getText()+"\n";
-    		 information+=Locale.getString("s_position")+": "+position.getText()+"\n";
+    		 information+=getString(R.string.s_nick)+": "+nick_name.getText()+"\n";
+    		 information+=getString(R.string.s_name)+": "+first_name.getText()+"\n";
+    		 information+=getString(R.string.s_surname)+": "+lastname.getText()+"\n";
+    		 information+=getString(R.string.s_country)+": "+country.getText()+"\n";
+    		 information+=getString(R.string.s_region)+": "+region.getText()+"\n";
+    		 information+=getString(R.string.s_city)+": "+city.getText()+"\n";
+    		 information+=getString(R.string.s_zipcode)+": "+zipcode.getText()+"\n";
+    		 information+=getString(R.string.s_address)+": "+address.getText()+"\n";
+    		 information+=getString(R.string.s_languages)+":\n"+languages.getText()+"\n";
+    		 information+=getString(R.string.s_gender)+"/"+getString(R.string.s_birthday)+":\n"+gender_birthday.getText()+"\n";
+    		 information+=getString(R.string.s_homepage)+": "+homepage.getText()+"\n";
+    		 information+=getString(R.string.s_about_user)+": "+about.getText()+"\n";
+    		 information+=getString(R.string.s_interests)+": "+interests.getText()+"\n";
+    		 information+=getString(R.string.s_email)+":\n"+emails.getText()+"\n";
+    		 information+=getString(R.string.s_phones)+":\n"+phones.getText()+"\n";
+    		 information+=getString(R.string.s_company)+": "+company.getText()+"\n";
+    		 information+=getString(R.string.s_dept)+": "+dept.getText()+"\n";
+    		 information+=getString(R.string.s_position)+": "+position.getText()+"\n";
     		 final String completed_information = information;
     		dialog = DialogBuilder.createYesNo(ContactListActivity.this,
     				lay,
     				Gravity.TOP,
-    				Locale.getString("s_information"),
-            		Locale.getString("s_do_copy"), Locale.getString("s_close"),
+    				getString(R.string.s_information),
+            		getString(R.string.s_do_copy), getString(R.string.s_close),
             		new OnClickListener(){
     					@Override
     					public void onClick(View arg0) {
@@ -1743,8 +1743,8 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     		dialog = DialogBuilder.createYesNo(ContactListActivity.this,
     				lay,
     				Gravity.TOP,
-    				Locale.getString("s_extended_status"),
-            		Locale.getString("s_ok"), Locale.getString("s_cancel"),
+    				getString(R.string.s_extended_status),
+            		getString(R.string.s_ok), getString(R.string.s_cancel),
             		new OnClickListener(){
     					@Override
     					public void onClick(View arg0) {
@@ -1766,15 +1766,15 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     	case 0x12://Auth reason input
         	LinearLayout lay1 = (LinearLayout)View.inflate(this, R.layout.auth_reason_input, null);
         	final EditText reason_input = (EditText)lay1.findViewById(R.id.auth_reason_input);
-        	reason_input.setText(Locale.getString("s_type_in_auth_req_template"));
+        	reason_input.setText(getString(R.string.s_type_in_auth_req_template));
     		if(ColorScheme.initialized) reason_input.setTextColor(ColorScheme.getColor(13));
     		if(ColorScheme.initialized) utilities.setLabel(((TextView)lay1.findViewById(R.id.l1)), "s_type_in_auth_req_text").setTextColor(ColorScheme.getColor(12));
         	Interface.attachEditTextStyle(reason_input);
         	dialog = DialogBuilder.createYesNo(ContactListActivity.this, lay1,
         			Gravity.CENTER,
-        			Locale.getString("s_authorization"),
-        			Locale.getString("s_do_send"),
-        			Locale.getString("s_cancel"),
+        			getString(R.string.s_authorization),
+        			getString(R.string.s_do_send),
+        			getString(R.string.s_cancel),
     				new OnClickListener(){
 						@Override
 						public void onClick(View arg0) {
@@ -1783,7 +1783,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 								context_contact.getProfile().sendAuthReq(context_contact.getID(), reason, context_contact.getTransportId());
 								removeDialog(0x12);
 							}else{
-								Toast.makeText(ContactListActivity.this, Locale.getString("s_error_message_header")+": "+Locale.getString("s_auth_request_error"), Toast.LENGTH_SHORT).show();
+								Toast.makeText(ContactListActivity.this, getString(R.string.s_error_message_header)+": "+getString(R.string.s_auth_request_error), Toast.LENGTH_SHORT).show();
 							}
 						}
         			},
@@ -1797,11 +1797,11 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     	case 0x15://Transport menu
         	adapter = new UAdapter();
         	adapter.setPadding(10);
-        	adapter.put(context_transport.params.getStatus(context_transport.status), Locale.getString("s_status"), 0);
-        	if(context_transport.params.additional_status_pic) adapter.put(context_transport.params.getAddStatus(context_transport.extended_status), Locale.getString("s_extended_status"), 1);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_add_contact"), 4);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_settings"), 2);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_do_delete"), 3);
+        	adapter.put(context_transport.params.getStatus(context_transport.status), getString(R.string.s_status), 0);
+        	if(context_transport.params.additional_status_pic) adapter.put(context_transport.params.getAddStatus(context_transport.extended_status), getString(R.string.s_extended_status), 1);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_add_contact), 4);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_settings), 2);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_do_delete), 3);
         	dialog = DialogBuilder.create(ContactListActivity.this,
         			context_transport.params.name_of_account_ids+" "+context_transport.account_name,
         			adapter,
@@ -1820,9 +1820,9 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 									showDialog(0x17);
 									break;
 								case 2:
-									
+
 									TransportSettingsActivity.launch(ContactListActivity.this, context_transport);
-									
+
 									//removeDialog(0x19);
 									//showDialog(0x19);
 									break;
@@ -1831,7 +1831,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 									break;
 								case 4:
 									if(!context_transport.connected){
-										service.showToast(Locale.getString("s_add_transport_contact_error"), Toast.LENGTH_SHORT);
+										service.showToast(getString(R.string.s_add_transport_contact_error), Toast.LENGTH_SHORT);
 										return;
 									}
 									removeDialog(0x18);
@@ -1869,14 +1869,14 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     	case 0x16://Transport status
         	adapter = new UAdapter();
         	adapter.setPadding(10);
-        	adapter.put(context_transport.params.getOnline(), Locale.getString("s_status_online"), 0);
+        	adapter.put(context_transport.params.getOnline(), getString(R.string.s_status_online), 0);
         	for(int i=0; i<context_transport.params.status_wrapper.length; i++){
         		if(context_transport.params.status_wrapper[i] != 0)
         			adapter.put((context_transport.params.getStatus(context_transport.params.status_wrapper[i])), TransportParams.translateStatus(context_transport.params.status_wrapper[i]), context_transport.params.status_wrapper[i]);
         	}
-        	adapter.put(context_transport.params.getOffline(), Locale.getString("s_status_offline"), -1);
+        	adapter.put(context_transport.params.getOffline(), getString(R.string.s_status_offline), -1);
         	dialog = DialogBuilder.create(ContactListActivity.this,
-        			Locale.getString("s_status"),
+        			getString(R.string.s_status),
         			adapter,
     				Gravity.CENTER,
     				new OnItemClickListener(){
@@ -1884,10 +1884,10 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 						public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 								removeDialog(0x16);
 								if(context_transport.account_name.length() == 0 || context_transport.account_pass.length() == 0){
-									service.showToast(Locale.getString("s_transport_params_need_update"), Toast.LENGTH_SHORT);
-						    		
+									service.showToast(getString(R.string.s_transport_params_need_update), Toast.LENGTH_SHORT);
+
 						    		TransportSettingsActivity.launch(ContactListActivity.this, context_transport);
-						    		
+
 									return;
 								}
 								final int status = (int)arg0.getAdapter().getItemId(arg2);
@@ -1966,21 +1966,21 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
     				adapter.setSelectionAsBold(true);
     				adapter.setTextSize(15);
     				Resources res = resources.ctx.getResources();
-    				adapter.put(res.getDrawable(R.drawable.sts_chat), Locale.getString("s_status_ready_for_chat"), 0);
-    				adapter.put(res.getDrawable(R.drawable.sts_home), Locale.getString("s_status_home"), 1);
-    				adapter.put(res.getDrawable(R.drawable.sts_work), Locale.getString("s_status_work"), 2);
+    				adapter.put(res.getDrawable(R.drawable.sts_chat), getString(R.string.s_status_ready_for_chat), 0);
+    				adapter.put(res.getDrawable(R.drawable.sts_home), getString(R.string.s_status_home), 1);
+    				adapter.put(res.getDrawable(R.drawable.sts_work), getString(R.string.s_status_work), 2);
     				adapter.put_separator();
-    				adapter.put(res.getDrawable(R.drawable.sts_lunch), Locale.getString("s_status_lunch"), 3);
-    				adapter.put(res.getDrawable(R.drawable.sts_away), Locale.getString("s_status_away"), 4);
-    				adapter.put(res.getDrawable(R.drawable.sts_na), Locale.getString("s_status_na"), 5);
-    				adapter.put(res.getDrawable(R.drawable.sts_oc), Locale.getString("s_status_oc"), 6);
-    				adapter.put(res.getDrawable(R.drawable.sts_dnd), Locale.getString("s_status_dnd"), 7);
+    				adapter.put(res.getDrawable(R.drawable.sts_lunch), getString(R.string.s_status_lunch), 3);
+    				adapter.put(res.getDrawable(R.drawable.sts_away), getString(R.string.s_status_away), 4);
+    				adapter.put(res.getDrawable(R.drawable.sts_na), getString(R.string.s_status_na), 5);
+    				adapter.put(res.getDrawable(R.drawable.sts_oc), getString(R.string.s_status_oc), 6);
+    				adapter.put(res.getDrawable(R.drawable.sts_dnd), getString(R.string.s_status_dnd), 7);
     				adapter.put_separator();
-    				adapter.put(res.getDrawable(R.drawable.sts_online), Locale.getString("s_status_online"), 8);
-    				adapter.put(res.getDrawable(R.drawable.sts_invis), Locale.getString("s_status_invisible"), 9);
-    				adapter.put(res.getDrawable(R.drawable.sts_invis_all), Locale.getString("s_status_invisible_for_all"), 10);
+    				adapter.put(res.getDrawable(R.drawable.sts_online), getString(R.string.s_status_online), 8);
+    				adapter.put(res.getDrawable(R.drawable.sts_invis), getString(R.string.s_status_invisible), 9);
+    				adapter.put(res.getDrawable(R.drawable.sts_invis_all), getString(R.string.s_status_invisible_for_all), 10);
     				adapter.put_separator();
-    				adapter.put(res.getDrawable(R.drawable.sts_offline), Locale.getString("s_status_offline"), 11);
+    				adapter.put(res.getDrawable(R.drawable.sts_offline), getString(R.string.s_status_offline), 11);
     				switch(profile.getStatus()){
     				case BimoidProtocol.PRES_STATUS_FREE_FOR_CHAT:
     					adapter.toggleSelection(0);
@@ -2179,7 +2179,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 			case RosterItem.TRANSPORT_ITEM:
 				context_transport = (Transport)item;
 				if(!context_transport.ready){
-					service.showDialogInContactList(Locale.getString("s_information"), Locale.getString("s_transport_is_not_ready_error"));
+					service.showDialogInContactList(getString(R.string.s_information), getString(R.string.s_transport_is_not_ready_error));
 					break;
 				}
 				removeDialog(0x15);
@@ -2192,7 +2192,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 					case NoteItem.CL_NOTE_TYPE_COMMAND:
 				    	File file = new File(context_note.TEXT);
 				    	if(!file.exists()){
-				    		service.showDialogInContactList(Locale.getString("s_information"), Locale.getString("s_file_note_err1"));
+				    		service.showDialogInContactList(getString(R.string.s_information), getString(R.string.s_file_note_err1));
 				    		break;
 				    	}
 				    	Uri uri = Uri.fromFile(file);
@@ -2205,7 +2205,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 					    	exec.setDataAndType(uri, mime_type);
 					    	startActivity(exec);
 				    	}catch(Exception e){
-				    		service.showDialogInContactList(Locale.getString("s_information"), Locale.getString("s_file_note_err2"));
+				    		service.showDialogInContactList(getString(R.string.s_information), getString(R.string.s_file_note_err2));
 				    	}
 					break;
 					case NoteItem.CL_NOTE_TYPE_EMAIL:
@@ -2251,7 +2251,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 				context_contact = (Contact)item;
 				//Log.e("ContextContact", "Is transport contact: "+(context_contact.getTransportId() != -1)+" (item_id: "+context_contact.getItemId()+")");
 				if(!context_contact.getProfile().connected){
-					service.showDialogInContactList(Locale.getString("s_information"), Locale.getString("s_you_must_be_connected_for_roster_control"));
+					service.showDialogInContactList(getString(R.string.s_information), getString(R.string.s_you_must_be_connected_for_roster_control));
 					return false;
 				}
 				roster_operation_confirm_helper = RosterOperation.CONTACT_MODIFY;
@@ -2261,7 +2261,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
 			case RosterItem.OBIMP_GROUP:
 				context_group = (Group)item;
 				if(!context_group.getProfile().connected){
-					service.showDialogInContactList(Locale.getString("s_information"), Locale.getString("s_you_must_be_connected_for_roster_control"));
+					service.showDialogInContactList(getString(R.string.s_information), getString(R.string.s_you_must_be_connected_for_roster_control));
 					return false;
 				}
 				roster_operation_confirm_helper = RosterOperation.GROUP_MODIFY;

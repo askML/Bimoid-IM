@@ -70,7 +70,7 @@ public class FileBrowserActivity extends Activity {
         setVolumeControlStream(0x3);
         setContentView(R.layout.file_browser_activity);
         if(!file_select_mode){
-        	((TextView)findViewById(R.id.l1)).setText(Locale.getString("s_file_browser_hint"));
+        	((TextView)findViewById(R.id.l1)).setText(getString(R.string.s_file_browser_hint));
         }
         initViews();
         adp = new files_adapter();
@@ -162,8 +162,8 @@ public class FileBrowserActivity extends Activity {
     	switch(type){
     	case 0:
         	dialog = DialogBuilder.createOk(FileBrowserActivity.this,
-        			Locale.getString("s_information"), Locale.getString("s_file_browser_notify_1"),
-    				Locale.getString("s_close"), Gravity.TOP, new OnClickListener(){
+        			getString(R.string.s_information), getString(R.string.s_file_browser_notify_1),
+    				getString(R.string.s_close), Gravity.TOP, new OnClickListener(){
     					@Override
     					public void onClick(View v) {
     						removeDialog(type);
@@ -173,9 +173,9 @@ public class FileBrowserActivity extends Activity {
     	case 1:
     		dialog = DialogBuilder.createYesNo(FileBrowserActivity.this,
     				Gravity.TOP,
-    				file_select_mode? Locale.getString("s_file_select_mode"): Locale.getString("s_file_transfer"),
-    				file_select_mode? Locale.getString("s_file_select_confirm"): Locale.getString("s_send_files_question"),
-            		Locale.getString("s_yes"), Locale.getString("s_no"),
+    				file_select_mode? getString(R.string.s_file_select_mode): getString(R.string.s_file_transfer),
+    				file_select_mode? getString(R.string.s_file_select_confirm): getString(R.string.s_send_files_question),
+            		getString(R.string.s_yes), getString(R.string.s_no),
             		new OnClickListener(){
     					@Override
     					public void onClick(View arg0) {

@@ -1,5 +1,6 @@
 package ru.ivansuper.bimoidproto.transports;
 
+import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
@@ -103,24 +104,24 @@ public class Transport extends RosterItem {
 		
 		final View account_settings = View.inflate(tabs_content.getContext(), R.layout.transport_settings_account_layout, null);
 		
-		((TextView)account_settings.findViewById(R.id.l1)).setText(Locale.getString("s_transport_settings_account_tab_login"));
-		((TextView)account_settings.findViewById(R.id.l2)).setText(Locale.getString("s_transport_settings_account_tab_password"));
+		((TextView)account_settings.findViewById(R.id.l1)).setText(Resources.getSystem().getString(R.string.s_transport_settings_account_tab_login));
+		((TextView)account_settings.findViewById(R.id.l2)).setText(Resources.getSystem().getString(R.string.s_transport_settings_account_tab_password));
 		((TextView)account_settings.findViewById(R.id.transport_settings_account_login)).setText(account_name);
 		((TextView)account_settings.findViewById(R.id.transport_settings_account_password)).setText(account_pass);
 		
-		TabContent tab_content = new TabContent(Locale.getString("s_transport_settings_account_tab"), account_settings);
+		TabContent tab_content = new TabContent(Resources.getSystem().getString(R.string.s_transport_settings_account_tab), account_settings);
 		tabs_content.addTab(tab_content);
 		
 		if(params.mTransportSettings.isServerOptionsUsed()){
 			
 			final View server_settings = View.inflate(tabs_content.getContext(), R.layout.transport_settings_server_layout, null);
 			
-			((TextView)server_settings.findViewById(R.id.l1)).setText(Locale.getString("s_transport_settings_server_tab_server"));
-			((TextView)server_settings.findViewById(R.id.l2)).setText(Locale.getString("s_transport_settings_server_tab_port"));
+			((TextView)server_settings.findViewById(R.id.l1)).setText(Resources.getSystem().getString(R.string.s_transport_settings_server_tab_server));
+			((TextView)server_settings.findViewById(R.id.l2)).setText(Resources.getSystem().getString(R.string.s_transport_settings_server_tab_port));
 			((TextView)server_settings.findViewById(R.id.transport_settings_server_address)).setText(account_server);
 			((TextView)server_settings.findViewById(R.id.transport_settings_server_port)).setText(String.valueOf(account_port));
 			
-			tab_content = new TabContent(Locale.getString("s_transport_settings_server_tab"), server_settings);
+			tab_content = new TabContent(Resources.getSystem().getString(R.string.s_transport_settings_server_tab), server_settings);
 			tabs_content.addTab(tab_content);
 			
 		}

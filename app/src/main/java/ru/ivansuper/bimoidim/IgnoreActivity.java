@@ -56,7 +56,7 @@ public class IgnoreActivity extends Activity implements Callback {
 			}
     	});
     	TextView label = (TextView)findViewById(R.id.l1);
-    	label.setText(ID+":\n"+Locale.getString("s_moved_to_ignore"));
+    	label.setText(ID+":\n"+getString(R.string.s_moved_to_ignore));
         if(ColorScheme.initialized) label.setTextColor(ColorScheme.getColor(3));
         if(ColorScheme.initialized) ((LinearLayout)findViewById(R.id.divider)).setBackgroundColor(ColorScheme.getColor(4));
     }
@@ -72,10 +72,10 @@ public class IgnoreActivity extends Activity implements Callback {
     	case 0x0://Menu
         	UAdapter adapter = new UAdapter();
         	adapter.setPadding(10);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_do_delete"), 0);
-        	adapter.put(resources.context_menu_icon, Locale.getString("s_do_copy_id"), 1);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_do_delete), 0);
+        	adapter.put(resources.context_menu_icon, getString(R.string.s_do_copy_id), 1);
         	dialog = DialogBuilder.create(IgnoreActivity.this,
-        			Locale.getString("s_menu"),
+        			getString(R.string.s_menu),
         			adapter,
     				Gravity.CENTER,
     				new OnItemClickListener(){
@@ -88,13 +88,13 @@ public class IgnoreActivity extends Activity implements Callback {
 								if(context_contact.getProfile().connected){
 									context_contact.getProfile().deleteContact(context_contact.getID(), context_contact.getTransportId());
 								}else{
-									Toast.makeText(IgnoreActivity.this, Locale.getString("s_you_must_be_connected_for_this_operation"), Toast.LENGTH_SHORT).show();
+									Toast.makeText(IgnoreActivity.this, getString(R.string.s_you_must_be_connected_for_this_operation), Toast.LENGTH_SHORT).show();
 								}
 								break;
 							case 1:
 								ClipboardManager cm = (ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
 								cm.setText(context_contact.getID());
-								Toast.makeText(IgnoreActivity.this, Locale.getString("s_copied"), Toast.LENGTH_SHORT).show();
+								Toast.makeText(IgnoreActivity.this, getString(R.string.s_copied), Toast.LENGTH_SHORT).show();
 								break;
 							}
 						}

@@ -46,7 +46,7 @@ public class TransportSettingsActivity extends Activity {
 		((TextView)findViewById(R.id.l1)).setText(mTransport.account_name);
 		
 		final Button ok_button = (Button)findViewById(R.id.transport_settings_ok_btn);
-		ok_button.setText(Locale.getString("s_ok"));
+		ok_button.setText(getString(R.string.s_ok));
 		ok_button.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
@@ -61,7 +61,7 @@ public class TransportSettingsActivity extends Activity {
 		});
 		
 		final Button cancel_button = (Button)findViewById(R.id.transport_settings_cancel_btn);
-		cancel_button.setText(Locale.getString("s_cancel"));
+		cancel_button.setText(getString(R.string.s_cancel));
 		cancel_button.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View v) {
