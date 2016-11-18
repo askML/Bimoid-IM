@@ -98,7 +98,8 @@ public class SmileysManager {
 				String line = in.readLine();
 				if(line != null){
 					String[] keys = line.split(",");
-					Bitmap sml = BitmapFactory.decodeStream(resources.am.open(String.valueOf(idx)));
+                    String idxs = String.valueOf(idx);
+					Bitmap sml = BitmapFactory.decodeStream(resources.am.open(idxs));
 					sml.setDensity(0);
 					sml = Bitmap.createScaledBitmap(sml, (int)((float)sml.getWidth()/multiplier), (int)((float)sml.getHeight()/multiplier), true);
 					sml.setDensity(0);
