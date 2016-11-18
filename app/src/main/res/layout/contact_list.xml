@@ -56,7 +56,7 @@
                             android:layout_height="wrap_content"
                             android:alwaysDrawnWithCache="false"
                             android:animationCache="false"
-                            android:orientation="vertical" />
+                            android:orientation="horizontal" />
                     </HorizontalScrollView>
 
                     <LinearLayout
