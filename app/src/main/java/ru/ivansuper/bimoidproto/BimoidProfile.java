@@ -1,6 +1,8 @@
 package ru.ivansuper.bimoidproto;
 
 import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -36,6 +38,8 @@ public class BimoidProfile {
     public static final int OBIMP_BEX_COM = 0x0001;
     public static final int OBIMP_BEX_CL = 0x0002;
     public static final int OBIMP_BEX_PRES = 0x0003;
+    public static final int OBIMP_BEX_IM = 0x0004;
+    public static final int OBIMP_BEX_UD = 0x0005;
 
     public static final byte CONN_STUDY_1 = 0;
     public static final byte CONN_STUDY_2 = 1;
@@ -279,8 +283,8 @@ public class BimoidProfile {
         for (int i = 0; i < contacts_.size(); i++) {
             RosterItem item = contacts_.get(i);
             if (item.type == RosterItem.OBIMP_CONTACT
-                    || item.type == RosterItem.TRANSPORT_ITEM
-                    || item.type == RosterItem.CL_ITEM_TYPE_NOTE) {
+                || item.type == RosterItem.TRANSPORT_ITEM
+                || item.type == RosterItem.CL_ITEM_TYPE_NOTE) {
                 if (item.getGroupId() == id) {
                     item.level = parent_level + 1;
                     list.add(item);
@@ -316,8 +320,8 @@ public class BimoidProfile {
         for (int i = 0; i < contacts.size(); i++) {
             RosterItem item = contacts.get(i);
             if (item.type == RosterItem.OBIMP_CONTACT ||
-                    item.type == RosterItem.CL_ITEM_TYPE_NOTE ||
-                    item.type == RosterItem.TRANSPORT_ITEM) {
+                item.type == RosterItem.CL_ITEM_TYPE_NOTE ||
+                item.type == RosterItem.TRANSPORT_ITEM) {
                 if (item.group_id == group_id)
                     list.add(item);
             }
@@ -408,7 +412,7 @@ public class BimoidProfile {
                         handle_OBIMP_BEX_PRES_SRV_MAIL_NOTIF(bex);
                 }
                 break;
-            case 0x4:
+            case OBIMP_BEX_IM:
                 switch (bex.getSubType()) {
                     case 0x2:
                         handleIM_PARAMS(bex);
@@ -427,7 +431,7 @@ public class BimoidProfile {
                         break;
                 }
                 break;
-            case 0x5:
+            case OBIMP_BEX_UD:
                 switch (bex.getSubType()) {
                     case 0x4:
                         if (bex.getID() == 1) {
@@ -1050,7 +1054,7 @@ public class BimoidProfile {
                                 transport_id = sdata.readDWord();
                             }
                             Contact contact = new Contact(account, name, group_id, id, privacy,
-                                    (list.getTLD(0x5) != null), (list.getTLD(0x6) != null), this);
+                                (list.getTLD(0x5) != null), (list.getTLD(0x6) != null), this);
                             //Log.i("RosterParser", "Contact: "+account+"/"+name);
                             contact.setTransportId(transport_id);
                             contacts.add(contact);
@@ -1430,7 +1434,12 @@ public class BimoidProfile {
         if (tld == null) return;
         int offline_count = tld.getData().readDWord();
         if (offline_count > 0) {
-            send(BEX.createEmptyBex(sequence, 4, 3, 0));//Requesting offline msgs
+            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    send(BEX.createEmptyBex(sequence, 4, 3, 0));//Requesting offline msgs
+                }
+            }, 1000);
         }
     }
 
@@ -1783,7 +1792,7 @@ public class BimoidProfile {
                             stld = slist.getTLD(0x1001);
                             if (stld != null) transport_id = stld.getData().readDWord();
                             Contact contact = new Contact(account, name, group_id, item_id, privacy,
-                                    (slist.getTLD(0x5) != null), (slist.getTLD(0x6) != null), this);
+                                (slist.getTLD(0x5) != null), (slist.getTLD(0x6) != null), this);
                             contact.setTransportId(transport_id);
                             contacts.add(contact);
                             sortContactList();
@@ -1865,7 +1874,7 @@ public class BimoidProfile {
 
     private void handleRosterOperationResult(BEX bex) {
         /*
-		ADD_RES_SUCCESS = 0x0000
+        ADD_RES_SUCCESS = 0x0000
 		ADD_RES_ERROR_WRONG_ITEM_TYPE = 0x0001
 		ADD_RES_ERROR_WRONG_PARENT_GROUP = 0x0002
 		ADD_RES_ERROR_NAME_LEN_LIMIT = 0x0003
@@ -1938,12 +1947,12 @@ public class BimoidProfile {
                                     removeContactById(contact.getID(), contact.getTransportId());
                                 }
                             contact = new Contact(operation.account,
-                                    operation.name,
-                                    operation.parent_id,
-                                    tld.getData().readDWord(),
-                                    operation.privacy,
-                                    operation.auth_flag,
-                                    operation.general_flag, this);
+                                operation.name,
+                                operation.parent_id,
+                                tld.getData().readDWord(),
+                                operation.privacy,
+                                operation.auth_flag,
+                                operation.general_flag, this);
                             contact.setTransportId(operation.tid);
                             contacts.add(contact);
                             sortContactList();
@@ -1969,9 +1978,9 @@ public class BimoidProfile {
                         case RosterOperation.GROUP_ADD:
                             tld = list.getTLD(0x2);
                             Group group = new Group(operation.name,
-                                    tld.getData().readDWord(),
-                                    operation.parent_id,
-                                    this);
+                                tld.getData().readDWord(),
+                                operation.parent_id,
+                                this);
                             contacts.add(group);
                             sortContactList();
                             try {
