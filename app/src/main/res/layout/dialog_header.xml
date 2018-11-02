@@ -15,7 +15,7 @@
         android:paddingTop="5sp"
         android:text="Header"
         android:textColor="#ffffffff"
-        android:textSize="24sp"/>
+        android:textSize="24sp" />
 
     <LinearLayout
         android:id="@+id/dialog_header_divider"
@@ -25,12 +25,12 @@
         android:layout_marginLeft="10sp"
         android:layout_marginRight="10sp"
         android:background="#ffb3e15b"
-        android:orientation="vertical"/>
+        android:orientation="vertical" />
 
     <LinearLayout
         android:id="@+id/dialog_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:minWidth="300sp"
-        android:orientation="vertical"/>
+        android:orientation="vertical" />
 </LinearLayout>

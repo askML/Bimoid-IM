@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawingCacheQuality="low"
-            android:src="@drawable/sts_online"/>
+            android:src="@drawable/sts_online" />
 
         <ImageView
             android:id="@+id/chat_user_ests"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="2sp"
             android:drawingCacheQuality="low"
-            android:src="@drawable/sts_connecting"/>
+            android:src="@drawable/sts_connecting" />
 
         <TextView
             android:id="@+id/chat_user_nickname"
@@ -39,7 +39,7 @@
             android:paddingLeft="2sp"
             android:text="Nickname"
             android:textColor="#ffffffff"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/chat_user_client"
@@ -67,7 +67,7 @@
         android:divider="#77000000"
         android:drawingCacheQuality="low"
         android:stackFromBottom="true"
-        android:transcriptMode="normal"/>
+        android:transcriptMode="normal" />
 
     <LinearLayout
         android:id="@+id/chat_bottom_panel"
@@ -95,14 +95,14 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:drawableLeft="@drawable/smile_button"
-            android:gravity="center_vertical|center_horizontal"/>
+            android:gravity="center_vertical|center_horizontal" />
 
         <Button
             android:id="@+id/chat_send_button"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:drawableRight="@drawable/msg_send"
-            android:gravity="center_vertical|center_horizontal"/>
+            android:gravity="center_vertical|center_horizontal" />
     </LinearLayout>
 
 </LinearLayout>

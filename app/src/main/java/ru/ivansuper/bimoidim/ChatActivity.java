@@ -204,10 +204,10 @@ public class ChatActivity extends ExFragment implements Callback {
                 }
                 adapter.put(resources.context_menu_icon, resources.ctx.getString(R.string.s_messages_history), 8);
                 dialog = DialogBuilder.create(ChatActivity.this.ACTIVITY,
-                        resources.ctx.getString(R.string.s_chat),
-                        adapter,
-                        Gravity.CENTER,
-                        new context_menu_listener());
+                    resources.ctx.getString(R.string.s_chat),
+                    adapter,
+                    Gravity.CENTER,
+                    new context_menu_listener());
                 break;
             case 0x1://Auth reason input
                 LinearLayout lay = (LinearLayout) View.inflate(this.ACTIVITY, R.layout.auth_reason_input, null);
@@ -218,40 +218,40 @@ public class ChatActivity extends ExFragment implements Callback {
                     utilities.setLabel(((TextView) lay.findViewById(R.id.l1)), "s_type_in_auth_req_text").setTextColor(ColorScheme.getColor(12));
                 Interface.attachEditTextStyle(reason_input);
                 dialog = DialogBuilder.createYesNo(ChatActivity.this.ACTIVITY, lay,
-                        Gravity.CENTER,
-                        resources.ctx.getString(R.string.s_authorization),
-                        resources.ctx.getString(R.string.s_do_send),
-                        resources.ctx.getString(R.string.s_cancel),
-                        new OnClickListener() {
-                            @Override
-                            public void onClick(View arg0) {
-                                String reason = reason_input.getText().toString();
-                                if (reason.trim().length() > 0) {
-                                    contact.getProfile().sendAuthReq(contact.getID(), reason, contact.getTransportId());
-                                    removeDialog(1);
-                                } else {
-                                    showMessage(resources.ctx.getString(R.string.s_error_message_header), resources.ctx.getString(R.string.s_auth_request_error));
-                                }
-                            }
-                        },
-                        new OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
+                    Gravity.CENTER,
+                    resources.ctx.getString(R.string.s_authorization),
+                    resources.ctx.getString(R.string.s_do_send),
+                    resources.ctx.getString(R.string.s_cancel),
+                    new OnClickListener() {
+                        @Override
+                        public void onClick(View arg0) {
+                            String reason = reason_input.getText().toString();
+                            if (reason.trim().length() > 0) {
+                                contact.getProfile().sendAuthReq(contact.getID(), reason, contact.getTransportId());
                                 removeDialog(1);
+                            } else {
+                                showMessage(resources.ctx.getString(R.string.s_error_message_header), resources.ctx.getString(R.string.s_auth_request_error));
                             }
-                        });
+                        }
+                    },
+                    new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            removeDialog(1);
+                        }
+                    });
                 break;
             case 0x2://Notify dialog
                 service.media.playEvent(Media.SVC_MSG);
                 if (dialog_for_display == null) return null;
                 dialog = DialogBuilder.createOk(ChatActivity.this.ACTIVITY,
-                        dialog_for_display.header, dialog_for_display.text, resources.ctx.getString(R.string.s_close),
-                        Gravity.TOP, new OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                removeDialog(type);
-                            }
-                        });
+                    dialog_for_display.header, dialog_for_display.text, resources.ctx.getString(R.string.s_close),
+                    Gravity.TOP, new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            removeDialog(type);
+                        }
+                    });
                 break;
             case 0x3://Message context
                 adapter = new UAdapter();
@@ -260,10 +260,10 @@ public class ChatActivity extends ExFragment implements Callback {
                 adapter.put(resources.context_menu_icon, resources.ctx.getString(R.string.s_do_copy), 4);
                 adapter.put(resources.context_menu_icon, resources.ctx.getString(R.string.s_copy_only_text), 5);
                 dialog = DialogBuilder.create(ChatActivity.this.ACTIVITY,
-                        resources.ctx.getString(R.string.s_chat),
-                        adapter,
-                        Gravity.CENTER,
-                        new context_menu_listener());
+                    resources.ctx.getString(R.string.s_chat),
+                    adapter,
+                    Gravity.CENTER,
+                    new context_menu_listener());
                 break;
         }
         /*Window wnd = dialog.getWindow();
@@ -412,22 +412,22 @@ public class ChatActivity extends ExFragment implements Callback {
             public void onClick(View v) {
                 if (resources.IT_IS_TABLET) {
                     last_selector = PopupBuilder.buildGrid(new smileys_adapter(), v, null, 5, 400, LayoutParams.FILL_PARENT,
-                            new OnItemClickListener() {
-                                @Override
-                                public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                                    last_selector.dismiss();
-                                    String received_smile_tag = ((smileys_adapter) arg0.getAdapter()).getTag(arg2);
-                                    int pos = input.getSelectionStart();
-                                    if (pos == -1) pos = 0;
-                                    String typed = input.getText().toString();
-                                    if (pos > typed.length()) pos = typed.length();
-                                    final String first_part = typed.substring(0, pos) + " " + received_smile_tag + " ";
-                                    String current_text = first_part + typed.substring(pos);
-                                    input.setText(current_text);
-                                    int cursor_pos = first_part.length();
-                                    input.setSelection(cursor_pos);
-                                }
-                            });
+                        new OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                                last_selector.dismiss();
+                                String received_smile_tag = ((smileys_adapter) arg0.getAdapter()).getTag(arg2);
+                                int pos = input.getSelectionStart();
+                                if (pos == -1) pos = 0;
+                                String typed = input.getText().toString();
+                                if (pos > typed.length()) pos = typed.length();
+                                final String first_part = typed.substring(0, pos) + " " + received_smile_tag + " ";
+                                String current_text = first_part + typed.substring(pos);
+                                input.setText(current_text);
+                                int cursor_pos = first_part.length();
+                                input.setSelection(cursor_pos);
+                            }
+                        });
                     last_selector.show();
                 } else {
                     ACTIVITY.startActivityForResult(new Intent(ChatActivity.this.ACTIVITY, SmileysSelector.class), CODE_SMILE);

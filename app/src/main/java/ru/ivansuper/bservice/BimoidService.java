@@ -46,11 +46,11 @@ import ru.ivansuper.bimoidproto.MessagesDump;
 
 public class BimoidService extends Service implements OnSharedPreferenceChangeListener, Callback {
     private static final Class<?>[] mSetForegroundSignature = new Class[]{
-            boolean.class};
+        boolean.class};
     private static final Class<?>[] mStartForegroundSignature = new Class[]{
-            int.class, Notification.class};
+        int.class, Notification.class};
     private static final Class<?>[] mStopForegroundSignature = new Class[]{
-            boolean.class};
+        boolean.class};
     private Method mSetForeground;
     private Method mStartForeground;
     private Method mStopForeground;
@@ -169,9 +169,9 @@ public class BimoidService extends Service implements OnSharedPreferenceChangeLi
     private void startForegroundCompat() {
         try {
             mStartForeground = getClass().getMethod("startForeground",
-                    mStartForegroundSignature);
+                mStartForegroundSignature);
             mStopForeground = getClass().getMethod("stopForeground",
-                    mStopForegroundSignature);
+                mStopForegroundSignature);
         } catch (NoSuchMethodException e) {
             // Running on an older platform.
             mStartForeground = mStopForeground = null;
@@ -179,10 +179,10 @@ public class BimoidService extends Service implements OnSharedPreferenceChangeLi
         }
         try {
             mSetForeground = getClass().getMethod("setForeground",
-                    mSetForegroundSignature);
+                mSetForegroundSignature);
         } catch (NoSuchMethodException e) {
             throw new IllegalStateException(
-                    "OS doesn't have Service.startForeground OR Service.setForeground!");
+                "OS doesn't have Service.startForeground OR Service.setForeground!");
         }
         startForegroundCompat(0xff33, getNotification());
     }
@@ -226,7 +226,7 @@ public class BimoidService extends Service implements OnSharedPreferenceChangeLi
     		private int check = -1;
 			@Override
 			public void onAccuracyChanged(Sensor sensor, int accuracy) {
-				
+
 			}
 			@Override
 			public void onSensorChanged(SensorEvent event) {
@@ -442,7 +442,7 @@ public class BimoidService extends Service implements OnSharedPreferenceChangeLi
     public void showDialogInSearch(String header, String text) {
         if (searchHdl != null) {
             Message msg = Message.obtain(searchHdl,
-                    DetailSearchActivity.HANDLE_NOTIFICATION, new BufferedDialog(3, header, text));
+                DetailSearchActivity.HANDLE_NOTIFICATION, new BufferedDialog(3, header, text));
             searchHdl.sendMessage(msg);
         }
     }
@@ -450,7 +450,7 @@ public class BimoidService extends Service implements OnSharedPreferenceChangeLi
     public void handleSearchResult(AccountInfoContainer result) {
         if (searchHdl != null) {
             Message msg = Message.obtain(searchHdl,
-                    DetailSearchActivity.HANDLE_SEARCH_RESULT, result);
+                DetailSearchActivity.HANDLE_SEARCH_RESULT, result);
             searchHdl.sendMessage(msg);
         }
     }
@@ -463,7 +463,7 @@ public class BimoidService extends Service implements OnSharedPreferenceChangeLi
     public void showProgressInContactList(String text) {
         if (clHdl != null) {
             Message msg = Message.obtain(clHdl,
-                    ContactListActivity.SHOW_PROGRESS_DIALOG, text);
+                ContactListActivity.SHOW_PROGRESS_DIALOG, text);
             clHdl.sendMessage(msg);
         }
     }
@@ -471,7 +471,7 @@ public class BimoidService extends Service implements OnSharedPreferenceChangeLi
     public void hideProgressInContactList() {
         if (clHdl != null) {
             Message msg = Message.obtain(clHdl,
-                    ContactListActivity.HIDE_PROGRESS_DIALOG);
+                ContactListActivity.HIDE_PROGRESS_DIALOG);
             clHdl.sendMessage(msg);
         }
     }
@@ -479,7 +479,7 @@ public class BimoidService extends Service implements OnSharedPreferenceChangeLi
     public void showErrorDialogInContactList(String header, String text, String error) {
         if (clHdl != null) {
             Message msg = Message.obtain(clHdl,
-                    ContactListActivity.SHOW_ERROR_DIALOG, new BufferedDialog(3, header, text, error));
+                ContactListActivity.SHOW_ERROR_DIALOG, new BufferedDialog(3, header, text, error));
             clHdl.sendMessage(msg);
         }
     }
@@ -487,7 +487,7 @@ public class BimoidService extends Service implements OnSharedPreferenceChangeLi
     public void showDialogInContactList(String header, String text) {
         if (clHdl != null) {
             Message msg = Message.obtain(clHdl,
-                    ContactListActivity.SHOW_INFO_DIALOG, new BufferedDialog(3, header, text));
+                ContactListActivity.SHOW_INFO_DIALOG, new BufferedDialog(3, header, text));
             clHdl.sendMessage(msg);
         }
     }
@@ -495,7 +495,7 @@ public class BimoidService extends Service implements OnSharedPreferenceChangeLi
     public void showAccountInfoDialogInContactList(AccountInfoContainer info) {
         if (clHdl != null) {
             Message msg = Message.obtain(clHdl,
-                    ContactListActivity.SHOW_ACCOUNT_INFO_DIALOG, info);
+                ContactListActivity.SHOW_ACCOUNT_INFO_DIALOG, info);
             clHdl.sendMessage(msg);
         }
     }

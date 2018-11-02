@@ -270,8 +270,8 @@ public class DialogBuilder {
         yes_btn.setText(yes);
         yes_btn.setOnClickListener(yes_listener);
         LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(
-                LayoutParams.FILL_PARENT,
-                LayoutParams.WRAP_CONTENT);
+            LayoutParams.FILL_PARENT,
+            LayoutParams.WRAP_CONTENT);
         llp.weight = 1;
         yes_btn.setLayoutParams(llp);
         Button no_btn = new Button(resources.ctx);
@@ -322,8 +322,8 @@ public class DialogBuilder {
         yes_btn.setText(yes);
         yes_btn.setOnClickListener(yes_listener);
         LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(
-                LayoutParams.FILL_PARENT,
-                LayoutParams.WRAP_CONTENT);
+            LayoutParams.FILL_PARENT,
+            LayoutParams.WRAP_CONTENT);
         llp.weight = 1;
         yes_btn.setLayoutParams(llp);
         Button no_btn = new Button(resources.ctx);

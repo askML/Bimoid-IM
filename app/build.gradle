@@ -17,14 +17,20 @@ android {
         }
     }
 
-    compileSdkVersion 10
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 18
+    buildToolsVersion "28.0.3"
     defaultConfig.versionCode = 10
     defaultConfig {
         applicationId "ru.ivansuper.bimoidim"
-        minSdkVersion 4
-        targetSdkVersion 10
+        minSdkVersion 14
+        targetSdkVersion 18
         versionName "1.0.4.6"
+        lintOptions {
+            checkReleaseBuilds false
+            // Or, if you prefer, you can continue to check for errors in release builds,
+            // but continue the build even when errors are found:
+            abortOnError false
+        }
     }
 
     buildTypes {
@@ -44,5 +50,5 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:13.0.0'
+    implementation 'com.android.support:support-v4:18.0.0'
 }

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10sp" >
+    android:padding="10sp">
 
     <TextView
         android:id="@+id/l1"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5sp"
         android:background="@drawable/textfield"
-        android:ems="10" >
+        android:ems="10">
 
         <requestFocus />
     </EditText>

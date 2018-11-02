@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import java.util.ArrayList;
+
 import ru.ivansuper.bimoidim.resources;
 
 public class Locale {

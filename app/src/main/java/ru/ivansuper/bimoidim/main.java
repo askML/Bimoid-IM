@@ -14,10 +14,8 @@ import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import ru.ivansuper.bservice.BimoidService;
-import ru.ivansuper.locale.Locale;
 
 public class main extends Activity implements Callback {
     private ServiceConnection svcc;
