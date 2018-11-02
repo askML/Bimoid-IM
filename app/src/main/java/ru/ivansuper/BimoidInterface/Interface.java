@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -259,7 +260,7 @@ public class Interface {
 
     public static Drawable getDrawable(String component, Rect rect) {
         DrawableContainer container = components.get(component);
-        container.bitmap.setDensity(0);
+        container.bitmap.setDensity(DisplayMetrics.DENSITY_XHIGH);
         if (container.rect == null) {
             //Log.i("Interface:getDrawable()", "Rect of component "+component+" is null");
             container.rect = new Rect(0, 0, 0, 0);
