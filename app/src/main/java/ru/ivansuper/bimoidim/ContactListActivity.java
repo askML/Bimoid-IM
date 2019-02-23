@@ -1,6 +1,5 @@
 package ru.ivansuper.bimoidim;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.Service;
 import android.content.DialogInterface;
@@ -272,6 +271,17 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
         contacts = (ListView) findViewById(R.id.contact_list_list);
         bottom_panel = (LinearLayout) findViewById(R.id.contact_list_bottom_panel);
         attachInterface();
+
+        final ImageView main_menu = (ImageView) findViewById(R.id.contact_list_main_menu);
+        main_menu.setBackgroundDrawable(Interface.getSelector());
+        main_menu.setPadding(10, 10, 10, 10);
+        main_menu.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog(2);
+            }
+        });
+
         final ImageView fast_settings = (ImageView) findViewById(R.id.contact_list_fast_settings);
         fast_settings.setBackgroundDrawable(Interface.getSelector());
         fast_settings.setPadding(10, 10, 10, 10);
@@ -506,7 +516,6 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
         }
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     protected Dialog onCreateDialog(final int type) {
         Dialog dialog = null;
         switch (type) {
@@ -526,7 +535,6 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
                         public void onClick(View v) {
                             removeDialog(type);
                             ClipboardManager cm = (ClipboardManager) getSystemService(Service.CLIPBOARD_SERVICE);
-                            assert cm != null;
                             cm.setText(stack);
                             Toast.makeText(ContactListActivity.this, R.string.s_copied, Toast.LENGTH_SHORT).show();
                         }
@@ -1921,7 +1929,6 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
                 break;
         }
         last_shown_dialog = dialog;
-        assert dialog != null;
         dialog.setOnDismissListener(new OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface arg0) {

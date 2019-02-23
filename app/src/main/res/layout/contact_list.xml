@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:alwaysDrawnWithCache="false"
     android:orientation="vertical">
 
@@ -41,8 +41,8 @@
                     android:layout_height="wrap_content"
                     android:alwaysDrawnWithCache="false"
                     android:background="@drawable/contactlist_bottom_panel"
-                    android:gravity="center_vertical"
-                    android:baselineAligned="false">
+                    android:baselineAligned="false"
+                    android:gravity="center_vertical">
 
                     <HorizontalScrollView
                         android:layout_width="0dp"
@@ -70,6 +70,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/settings"
+                            tools:ignore="ContentDescription" />
+
+                        <ImageView
+                            android:id="@+id/contact_list_main_menu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/hide_groups"
                             tools:ignore="ContentDescription" />
                     </LinearLayout>
                 </LinearLayout>
