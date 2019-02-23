@@ -1,5 +1,6 @@
 package ru.ivansuper.bimoidim;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.Service;
 import android.content.DialogInterface;
@@ -505,6 +506,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     protected Dialog onCreateDialog(final int type) {
         Dialog dialog = null;
         switch (type) {
@@ -524,6 +526,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
                         public void onClick(View v) {
                             removeDialog(type);
                             ClipboardManager cm = (ClipboardManager) getSystemService(Service.CLIPBOARD_SERVICE);
+                            assert cm != null;
                             cm.setText(stack);
                             Toast.makeText(ContactListActivity.this, R.string.s_copied, Toast.LENGTH_SHORT).show();
                         }
@@ -1918,6 +1921,7 @@ public class ContactListActivity extends JFragmentActivity implements Callback, 
                 break;
         }
         last_shown_dialog = dialog;
+        assert dialog != null;
         dialog.setOnDismissListener(new OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface arg0) {

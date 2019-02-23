@@ -168,7 +168,6 @@ public class files_adapter extends BaseAdapter {
                                         //preview.setBounds(0, 0, bmpA.getWidth(), bmpA.getHeight());
                                         if (stamp != timestamp) break label;
                                         list.get(position).icon = preview;
-                                        if (stamp != timestamp) break label;
                                         Runnable r = new Runnable() {
                                             @Override
                                             public void run() {

@@ -84,32 +84,32 @@ public class TransportParams {
 
     public final Drawable getLogo() {
         final Bitmap res = Bitmap.createBitmap(main_status_list, 0, 0, main_status_list.getHeight(), main_status_list.getHeight());
-        res.setDensity(0);
+        res.setDensity(resources.dm.densityDpi);
         final BitmapDrawable drawable = new BitmapDrawable(res);
         return drawable;
     }
 
     public final Drawable getOnline() {
         final Bitmap res = Bitmap.createBitmap(main_status_list, main_status_list.getHeight(), 0, main_status_list.getHeight(), main_status_list.getHeight());
-        res.setDensity(0);
+        res.setDensity(resources.dm.densityDpi);
         return new BitmapDrawable(res);
     }
 
     public final Drawable getOffline() {
         final Bitmap res = Bitmap.createBitmap(main_status_list, 2 * main_status_list.getHeight(), 0, main_status_list.getHeight(), main_status_list.getHeight());
-        res.setDensity(0);
+        res.setDensity(resources.dm.densityDpi);
         return new BitmapDrawable(res);
     }
 
     public final Drawable getConnecting() {
         final Bitmap res = Bitmap.createBitmap(main_status_list, 3 * main_status_list.getHeight(), 0, main_status_list.getHeight(), main_status_list.getHeight());
-        res.setDensity(0);
+        res.setDensity(resources.dm.densityDpi);
         return new BitmapDrawable(res);
     }
 
     public final Drawable getUndetermined() {
         final Bitmap res = Bitmap.createBitmap(main_status_list, 4 * main_status_list.getHeight(), 0, main_status_list.getHeight(), main_status_list.getHeight());
-        res.setDensity(0);
+        res.setDensity(resources.dm.densityDpi);
         return new BitmapDrawable(res);
     }
 
@@ -122,7 +122,7 @@ public class TransportParams {
                 break;
             }
         final Bitmap res = Bitmap.createBitmap(main_status_list, pos * main_status_list.getHeight(), 0, main_status_list.getHeight(), main_status_list.getHeight());
-        res.setDensity(0);
+        res.setDensity(resources.dm.densityDpi);
         return new BitmapDrawable(res);
     }
 
@@ -130,7 +130,7 @@ public class TransportParams {
         if (code == 0) return XStatus.getIcon(0);
         int pos = code - 1;
         final Bitmap res = Bitmap.createBitmap(additional_status_list, pos * additional_status_list.getHeight(), 0, additional_status_list.getHeight(), additional_status_list.getHeight());
-        res.setDensity(0);
+        res.setDensity(resources.dm.densityDpi);
         return new BitmapDrawable(res);
     }
 
@@ -281,6 +281,7 @@ public class TransportParams {
         }
 
         try {
+            assert dis != null;
             dis.close();
         } catch (Throwable t1) {
         }
@@ -314,7 +315,7 @@ public class TransportParams {
     }
 
     public static int getPreferedSize() {
-        int prefered_size = 0;
+        int prefered_size;
         switch (resources.dm.densityDpi) {
             case DisplayMetrics.DENSITY_LOW:
                 prefered_size = 16;

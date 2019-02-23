@@ -260,7 +260,7 @@ public class Interface {
 
     public static Drawable getDrawable(String component, Rect rect) {
         DrawableContainer container = components.get(component);
-        container.bitmap.setDensity(DisplayMetrics.DENSITY_XHIGH);
+        container.bitmap.setDensity(resources.dm.densityDpi);
         if (container.rect == null) {
             //Log.i("Interface:getDrawable()", "Rect of component "+component+" is null");
             container.rect = new Rect(0, 0, 0, 0);

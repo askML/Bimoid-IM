@@ -638,8 +638,6 @@ public class ChatActivity extends ExFragment implements Callback {
     public static final boolean checkThisContactOpenedInChat(Contact contact_) {
         if (contact == null) return false;
         if (contact_ == null) return false;
-        if (contact.getProfile().equals(contact_.profile) && contact.getID().equals(contact_.getID()) && isAnyChatOpened)
-            return true;
-        return false;
+        return contact.getProfile().equals(contact_.profile) && contact.getID().equals(contact_.getID()) && isAnyChatOpened;
     }
 }

@@ -255,7 +255,7 @@
     <string name="s_operation_result_14">Incorrect parent group</string>
     <string name="s_transfer_inc_file" formatted="false">Incoming file:\n%%%1\nSize %%%2 bytes.</string>
     <string name="s_transfer_inc_files" formatted="false">Incoming files:\n%%%1\n&#8230;\n%%%2 files.\nTotal size %%%3 bytes.</string>
-    <string name="s_force_close_info">Program crashed.\nSorry for the inconvenienves.\nPlease send *.st files from directory /sdcard/Bimoid/* to ivansuper@yandex.ru. Your comments are welcome. Thanks!</string>
+    <string name="s_force_close_info">Program crashed.\nSorry for the inconvenienves.\nPlease send *.st files from directory /sdcard/Bimoid/* to admin@alexey-m.ru. Your comments are welcome. Thanks!</string>
     <string name="s_incorrect_server_answer">Incorrect server answer. Registration aborted</string>
     <string name="s_registration_not_enabled">This server doesn\'t support online registration feature</string>
     <string name="s_registration_success">Success!</string>

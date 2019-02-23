@@ -128,6 +128,7 @@ public class HistoryActivity extends Activity {
                             ClipboardManager cm = (ClipboardManager) HistoryActivity.this.getSystemService(Service.CLIPBOARD_SERVICE);
                             switch ((int) arg0.getAdapter().getItemId(arg2)) {
                                 case 0:
+                                    assert cm != null;
                                     cm.setText(item.message);
                                     Toast.makeText(HistoryActivity.this, getString(R.string.s_copied), Toast.LENGTH_SHORT).show();
                                     break;

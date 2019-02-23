@@ -82,6 +82,7 @@ public class DialogBuilder {
         container.addView(lay);
         Dialog d = new Dialog(context, style);
         Window wnd = d.getWindow();
+        assert wnd != null;
         Interface.attachWindowBackground(wnd, Interface.dialogs_back);
         WindowManager.LayoutParams lp = wnd.getAttributes();
         lp.width = LayoutParams.FILL_PARENT;

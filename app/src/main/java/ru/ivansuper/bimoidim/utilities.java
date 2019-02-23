@@ -26,15 +26,15 @@ public class utilities {
 
     public static String convertToHex(byte[] data) {
         StringBuffer buf = new StringBuffer();
-        for (int i = 0; i < data.length; i++) {
-            int halfbyte = (data[i] >>> 4) & 0x0F;
+        for (byte aData : data) {
+            int halfbyte = (aData >>> 4) & 0x0F;
             int two_halfs = 0;
             do {
                 if ((0 <= halfbyte) && (halfbyte <= 9))
                     buf.append((char) ('0' + halfbyte));
                 else
                     buf.append((char) ('a' + (halfbyte - 10)));
-                halfbyte = data[i] & 0x0F;
+                halfbyte = aData & 0x0F;
             } while (two_halfs++ < 1);
         }
         return buf.toString();
@@ -64,8 +64,7 @@ public class utilities {
         System.arraycopy(first_hash, 0, second_md5buf, 0, first_hash.length);
         System.arraycopy(key_, 0, second_md5buf, first_hash.length, key_.length);
 
-        byte[] final_hash = MD5.calculateMD5(second_md5buf);
-        return final_hash;
+        return MD5.calculateMD5(second_md5buf);
     }
 
     public static byte[] getStringUTF8(String source) {
@@ -108,10 +107,7 @@ public class utilities {
     }
 
     public static boolean isUnicode(byte a, byte b, byte c) {
-        if ((a <= 0xA) && (b > 0xA) && (c <= 0xA)) {
-            return true;
-        }
-        return false;
+        return (a <= 0xA) && (b > 0xA) && (c <= 0xA);
     }
 
     public static String longitudeToString(long seconds) {

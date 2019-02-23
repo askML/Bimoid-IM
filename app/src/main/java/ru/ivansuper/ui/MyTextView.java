@@ -241,6 +241,7 @@ public class MyTextView extends View {
         adp.put(res.getString(R.string.s_do_copy), 1);
         mContextMenu = new Dialog(resources.service, R.style.DialogTheme);
         Window wnd = mContextMenu.getWindow();
+        assert wnd != null;
         LayoutParams lp = wnd.getAttributes();
         lp.type = LayoutParams.TYPE_SYSTEM_ALERT;
         lp.gravity = Gravity.CENTER;

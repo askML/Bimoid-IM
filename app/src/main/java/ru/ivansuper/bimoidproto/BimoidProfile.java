@@ -1690,6 +1690,7 @@ public class BimoidProfile {
                 contact = createTemporaryContact(account, tid);
             }
         }
+        assert contact != null;
         contact.getHistoryObject().preloadCache();
         HistoryItem hst = null;
         if (tld != null) {

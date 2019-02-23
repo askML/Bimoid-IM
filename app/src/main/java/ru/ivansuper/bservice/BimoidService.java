@@ -258,6 +258,7 @@ public class BimoidService extends Service implements OnSharedPreferenceChangeLi
         registerReceiver(receiver, i);
         if (prefs.getBoolean("ms_wake_lock", false)) {
             PowerManager pMan = (PowerManager) getSystemService(POWER_SERVICE);
+            assert pMan != null;
             wake_lock = pMan.newWakeLock(0x1, "ru.ivansuper.jasmin_wake");
             wake_lock.acquire();
             Log.v("POWER", "WAKE_LOCK ENABLED");

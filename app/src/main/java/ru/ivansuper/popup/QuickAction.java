@@ -36,6 +36,7 @@ public class QuickAction extends CustomPopupWindow {
         context = anchor.getContext();
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+        assert inflater != null;
         root = (ViewGroup) inflater.inflate(R.layout.popup, null);
 
         mHeaderLabel = (TextView) root.findViewById(R.id.popup_wnd_header);

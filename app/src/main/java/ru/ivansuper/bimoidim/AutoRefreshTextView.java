@@ -70,7 +70,7 @@ public class AutoRefreshTextView extends TextView {
     private URLSpan getSpanAt(int idx) {
         URLSpan span = null;
         Spanned spn = null;
-        if (idx < 0) return span;
+        if (idx < 0) return null;
         try {
             spn = (Spannable) getText();
         } catch (Exception e) {

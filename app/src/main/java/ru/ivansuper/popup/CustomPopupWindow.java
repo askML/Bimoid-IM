@@ -80,6 +80,7 @@ public class CustomPopupWindow {
         LayoutInflater inflator =
             (LayoutInflater) anchor.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+        assert inflator != null;
         setContentView(inflator.inflate(layoutResID, null));
     }
 

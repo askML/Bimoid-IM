@@ -258,7 +258,7 @@
     <string name="s_operation_result_14">Неверная родительская группа</string>
     <string name="s_transfer_inc_file" formatted="false">Входящий файл:\n%%%1\nРазмер %%%2 байт.</string>
     <string name="s_transfer_inc_files" formatted="false">Входящие файлы:\n%%%1\n&#8230;\n%%%2 штук.\nОбщий размер %%%3 байт.</string>
-    <string name="s_force_close_info">В работе программы был зафиксирован сбой.\nПриношу свои извинения за неудобства.\nПожалуйста, вышлите файлы *.st из директории /sdcard/Bimoid/* на адрес ivansuper@yandex.ru. Комментарии к ошибке приветствуются. Спасибо!</string>
+    <string name="s_force_close_info">В работе программы был зафиксирован сбой.\nПриношу свои извинения за неудобства.\nПожалуйста, вышлите файлы *.st из директории /sdcard/Bimoid/* на адрес admin@alexey-m.ru. Комментарии к ошибке приветствуются. Спасибо!</string>
     <string name="s_incorrect_server_answer">Некорректный ответ сервера. Регистрация прервана</string>
     <string name="s_registration_not_enabled">Регистрация на данном сервере отключена</string>
     <string name="s_registration_success">Регистрация успешна</string>

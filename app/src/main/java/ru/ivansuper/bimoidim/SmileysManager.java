@@ -57,15 +57,15 @@ public class SmileysManager {
         for (int i = 0; i < selector_smileys.size(); i++) {
             Drawable drw = selector_smileys.get(i);
             Bitmap tmp = ((BitmapDrawable) drw).getBitmap();
-            int w = new Double(tmp.getWidth() * scale).intValue();
-            int h = new Double(tmp.getHeight() * scale).intValue();
+            int w = Double.valueOf(tmp.getWidth() * scale).intValue();
+            int h = Double.valueOf(tmp.getHeight() * scale).intValue();
             drw.setBounds(0, 0, w, h);
         }
         for (int i = 0; i < smileys.size(); i++) {
             Drawable drw = smileys.get(i);
             Bitmap tmp = ((BitmapDrawable) drw).getBitmap();
-            int w = new Double(tmp.getWidth() * scale).intValue();
-            int h = new Double(tmp.getHeight() * scale).intValue();
+            int w = Double.valueOf(tmp.getWidth() * scale).intValue();
+            int h = Double.valueOf(tmp.getHeight() * scale).intValue();
             drw.setBounds(0, 0, w, h);
         }
     }
@@ -105,16 +105,16 @@ public class SmileysManager {
                     String[] keys = line.split(",");
                     String idxs = String.valueOf(idx);
                     Bitmap sml = BitmapFactory.decodeStream(resources.am.open(idxs));
-                    sml.setDensity(0);
+                    sml.setDensity(Bitmap.DENSITY_NONE);
                     sml = Bitmap.createScaledBitmap(sml, (int) ((float) sml.getWidth() / multiplier), (int) ((float) sml.getHeight() / multiplier), true);
-                    sml.setDensity(0);
+                    sml.setDensity(Bitmap.DENSITY_NONE);
                     Drawable smiley = new BitmapDrawable(sml);
                     int size = sml.getHeight();
                     if (max_height < size) max_height = size;
                     selector_tags.add(keys[0]);
                     selector_smileys.add(smiley);
-                    for (int i = 0; i < keys.length; i++) {
-                        tags.add(keys[i]);
+                    for (String key : keys) {
+                        tags.add(key);
                         BitmapDrawable smiley_ = new BitmapDrawable(sml);
                         smileys.add(smiley_);
                     }
@@ -161,12 +161,12 @@ public class SmileysManager {
                         opts.inSampleSize = 2;
                         Bitmap sml = BitmapFactory.decodeStream(resources.am.open(String.valueOf(idx)), null, opts);
                         Drawable smiley = new BitmapDrawable(sml);
+                        assert sml != null;
                         int size = sml.getHeight();
                         if (max_height < size) max_height = size;
-                        for (int i = 0; i < keys.length; i++) {
-                            tags.add(keys[i]);
-                            Drawable drw = smiley;
-                            smileys.add(drw);
+                        for (String key : keys) {
+                            tags.add(key);
+                            smileys.add(smiley);
                             if (!item_loaded) {
                                 selector_tags.add(keys[0]);
                                 BitmapDrawable smiley_ = new BitmapDrawable(sml);
@@ -196,7 +196,7 @@ public class SmileysManager {
 
     public static Spannable getSmiledText(String text) {
         //Log.v("SPANNABLE_BUILDER", "PROCESSING STARTED");
-        String source = new String(text);
+        String source = text;
         SpannableStringBuilder builder = new SpannableStringBuilder(text);
         int sz = tags.size();
         for (int j = 0; j < sz; j++) {
@@ -224,7 +224,6 @@ public class SmileysManager {
     public static Spannable getSmiledText(SpannableStringBuilder text) {
         //Log.v("SPANNABLE_BUILDER", "PROCESSING STARTED");
         String source = text.toString();
-        SpannableStringBuilder builder = text;
         int sz = tags.size();
         for (int j = 0; j < sz; j++) {
             String entry = tags.get(j);
@@ -239,21 +238,21 @@ public class SmileysManager {
                     String a = source.substring(0, idx);
                     String b = source.substring(idx + length, source.length());
                     source = a + plomb + b;
-                    builder.setSpan(new ImageSpan(smileys.get(j)), idx, idx + length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    text.setSpan(new ImageSpan(smileys.get(j)), idx, idx + length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     idx += length - 1;
                 }
             }
         }
         //Log.v("SPANNABLE_BUILDER", "PROCESSING COMPLETE: "+source);
-        return builder;
+        return text;
     }
 
     private static String getPlomb(int len) {
-        String res = "";
+        StringBuilder res = new StringBuilder();
         for (int i = 0; i < len; i++) {
-            res += "#";
+            res.append("#");
         }
-        return res;
+        return res.toString();
     }
 
     public static String getTag(String source) {

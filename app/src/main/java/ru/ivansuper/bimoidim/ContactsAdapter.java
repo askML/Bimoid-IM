@@ -144,7 +144,7 @@ public class ContactsAdapter extends BaseAdapter {
                 if ((item.level <= level) && skip) {
                     skip = false;
                 }
-                GroupInfo info = null;
+                GroupInfo info;
                 if (item.type == RosterItem.OBIMP_GROUP) {
                     info = new GroupInfo();
                     item.profile.getGroupPresenceInfo(item, info);

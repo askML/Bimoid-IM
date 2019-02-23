@@ -94,6 +94,7 @@ public class IgnoreActivity extends Activity implements Callback {
                                     break;
                                 case 1:
                                     ClipboardManager cm = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                                    assert cm != null;
                                     cm.setText(context_contact.getID());
                                     Toast.makeText(IgnoreActivity.this, getString(R.string.s_copied), Toast.LENGTH_SHORT).show();
                                     break;

@@ -19,12 +19,12 @@ android {
 
     compileSdkVersion 18
     buildToolsVersion "28.0.3"
-    defaultConfig.versionCode = 11
+    defaultConfig.versionCode = 12
     defaultConfig {
         applicationId "ru.ivansuper.bimoidim"
-        minSdkVersion 14
-        targetSdkVersion 18
-        versionName "1.0.4.7"
+        minSdkVersion 4
+        targetSdkVersion 10
+        versionName "1.0.4.8"
         lintOptions {
             checkReleaseBuilds false
             // Or, if you prefer, you can continue to check for errors in release builds,
