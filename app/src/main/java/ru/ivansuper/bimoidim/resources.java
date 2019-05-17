@@ -155,11 +155,7 @@ public class resources {
     }
 
     public static boolean sd_mounted() {
-        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            return true;
-        } else {
-            return false;
-        }
+        return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
     }
 
     public static boolean isTablet() {

@@ -1,6 +1,6 @@
 package ru.ivansuper.bimoidproto.filetransfer;
 
-import android.content.res.Resources;
+import android.content.Context;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
@@ -557,6 +557,7 @@ public class FileReceiver extends FileTransfer {
             if (transfer_buttons == null) return;
             if (transfer_accept == null) return;
             if (transfer_decline == null) return;
+            Context ctx = resources.ctx;
             //Log.i("Container", "Updating views");
             switch (getState()) {
                 case FileReceiver.STATE_WAITING:
@@ -567,13 +568,13 @@ public class FileReceiver extends FileTransfer {
                     transfer_accept.setVisibility(View.GONE);
                     switch (getMode()) {
                         case FileReceiver.MODE_NORMAL:
-                            view.setText(Resources.getSystem().getString(R.string.s_file_transfer_label_1));
+                            view.setText(ctx.getResources().getString(R.string.s_file_transfer_label_1));
                             break;
                         case FileReceiver.MODE_REVERSED:
-                            view.setText(Resources.getSystem().getString(R.string.s_file_transfer_label_2));
+                            view.setText(ctx.getResources().getString(R.string.s_file_transfer_label_2));
                             break;
                         case FileReceiver.MODE_PROXY:
-                            view.setText(Resources.getSystem().getString(R.string.s_file_transfer_label_3));
+                            view.setText(ctx.getResources().getString(R.string.s_file_transfer_label_3));
                             break;
                     }
                     view.relayout();
@@ -584,16 +585,16 @@ public class FileReceiver extends FileTransfer {
                     progress.setMax(getTotalSize());
                     progress.setProgress(getTotalReceived());
                     transfer_accept.setVisibility(View.GONE);
-                    view.setText(utilities.match(Resources.getSystem().getString(R.string.s_file_receiving), new String[]{String.valueOf(getReceivedFilesCount() + 1), String.valueOf(getFilesCount()), getProcessingFileName(), String.valueOf(getPercentage()), String.valueOf(getProcessingSize())}));
+                    view.setText(utilities.match(ctx.getResources().getString(R.string.s_file_receiving), new String[]{String.valueOf(getReceivedFilesCount() + 1), String.valueOf(getFilesCount()), getProcessingFileName(), String.valueOf(getPercentage()), String.valueOf(getProcessingSize())}));
                     view.relayout();
                     break;
                 case FileReceiver.STATE_RECEIVED:
                     progress.setVisibility(View.GONE);
                     transfer_buttons.setVisibility(View.GONE);
                     if (getFilesCount() > 1) {
-                        view.setText(Resources.getSystem().getString(R.string.s_files_received));
+                        view.setText(ctx.getResources().getString(R.string.s_files_received));
                     } else {
-                        view.setText(utilities.match(Resources.getSystem().getString(R.string.s_file_received), new String[]{getProcessingFileName()}));
+                        view.setText(utilities.match(ctx.getResources().getString(R.string.s_file_received), new String[]{getProcessingFileName()}));
                     }
                     view.relayout();
                     break;
@@ -601,9 +602,9 @@ public class FileReceiver extends FileTransfer {
                     progress.setVisibility(View.GONE);
                     transfer_buttons.setVisibility(View.GONE);
                     if (canceled()) {
-                        view.setText(Resources.getSystem().getString(R.string.s_file_receiving_canceled));
+                        view.setText(ctx.getResources().getString(R.string.s_file_receiving_canceled));
                     } else {
-                        view.setText(Resources.getSystem().getString(R.string.s_file_receiving_error));
+                        view.setText(ctx.getResources().getString(R.string.s_file_receiving_error));
                     }
                     view.relayout();
                     break;
