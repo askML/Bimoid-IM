@@ -13,6 +13,7 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -62,9 +63,9 @@ public class FileBrowserActivity extends Activity {
         }
         setVolumeControlStream(0x3);
         setContentView(R.layout.file_browser_activity);
-        if (!file_select_mode) {
-            ((TextView) findViewById(R.id.l1)).setText(getString(R.string.s_file_browser_hint));
-        }
+//        if (!file_select_mode) {
+//            ((TextView) findViewById(R.id.l1)).setText(getString(R.string.s_file_browser_hint));
+//        }
         initViews();
         adp = new files_adapter();
         File sd = new File((start_path == null) ? resources.SD_PATH : start_path);
@@ -122,6 +123,28 @@ public class FileBrowserActivity extends Activity {
                 } else {
                     adp.timestamp = System.currentTimeMillis();
                 }
+            }
+        });
+
+        final Button ft_send_btn = (Button) findViewById(R.id.ft_send_btn);
+
+        ft_send_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (file_select_mode) return;
+                if (adp.getSelected().length() == 0) {
+                    showDialog(0);
+                } else {
+                    showDialog(1);
+                }
+            }
+        });
+
+        final Button ft_cancel_btn = (Button) findViewById(R.id.ft_cancel_btn);
+
+        ft_cancel_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                FileBrowserActivity.this.setResult(RESULT_CANCELED);
+                finish();
             }
         });
     }

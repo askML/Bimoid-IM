@@ -6,7 +6,7 @@ public class Language {
     public String AUTHOR;
     public boolean internal;
 
-    public Language(String name, String language, String author, boolean internal) {
+    Language(String name, String language, String author, boolean internal) {
         NAME = name;
         LANGUAGE = language;
         AUTHOR = author;
